@@ -1,0 +1,27 @@
+.logo-header { 
+    display: block; 
+    margin: auto;
+    padding: 20px;
+}
+
+.navigation-outline { 
+    border-top: 1px rgb(139, 139, 139) solid;
+    border-bottom: 1px rgb(139, 139, 139) solid;
+}
+
+.navigation-container { 
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    max-width: 1400px;
+}
+
+.navigation-bar { 
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    list-style-type: none;
+    color:#F2C75C;
+}
+
+

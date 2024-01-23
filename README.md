@@ -29,7 +29,7 @@ If images on the blog specific page are clicked, a modal should appear giving th
 ### Contact page
 
 Create a contact us page, there should be 4 textboxes on this page.
--	Name (Should be more than 5 characters long)
+-	Name ( Should be more than 5 characters long)
 -	Email address (Must be a valid email address)
 -	Subject (Should be more than 15 characters long)
 -	Message content (Should be more than 25 characters long)

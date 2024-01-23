@@ -1,0 +1,51 @@
+@import "/css/index.css";
+@import "/css/navigation.css"; 
+@import "/css/fonts.css"; 
+@import "/css/blogs.css"; 
+
+Body { 
+    background-color: black;
+    color: white;
+    
+}
+
+.whitespace { 
+    margin: 20px;
+}
+
+
+a { 
+    color: #F2C75C; 
+}
+
+.margin { 
+    margin: 5px;
+}
+
+.readmore-btn { 
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 5px;
+    padding-bottom: 5px;
+    
+}
+
+.carousel-btns { 
+    display: flex;
+    justify-content: space-between;
+}
+
+p { 
+    margin: 0;
+}
+
+.category-emblem { 
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: black;
+    border: 1px white solid; 
+    color: white;
+    align-self: center;
+    padding: 5px;
+    text-decoration: none;
+}
