@@ -1,5 +1,5 @@
 import { fetchData, fetchCategory, fetchFeaturedMedia } from "./fetch.js";
-import { createPostHolder, createPostText, createCarouselBtns, createReadMoreBtn, createCategoryEmblem, createBlogCard } from "./Functions/RenderHTML.js";
+import { createPostHolder, createPostText, createCarouselBtns, createReadMoreBtn, createCategoryEmblem, createBlogCard, createBlogText } from "./Functions/RenderHTML.js";
 
 const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts";
 

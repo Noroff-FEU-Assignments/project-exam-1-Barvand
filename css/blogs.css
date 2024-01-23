@@ -11,6 +11,7 @@
     width: 100%;
     flex-direction: row;
     gap: 30px;
+
 }
 
 .blog-card { 
@@ -26,3 +27,4 @@
 .blog-card img { 
     width: 100%;
 }
+

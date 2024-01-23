@@ -51,16 +51,6 @@ export function createCategoryEmblem(category) {
 }
 
 
-
-export function createBlogCard(imageUrl) {
-    const elementBlogCard = document.createElement("div");
-    elementBlogCard.classList.add("blog-card");
-    elementBlogCard.style.backgroundImage = `url(${imageUrl})`;
-    return elementBlogCard;
-}
-
-
-
 export async function renderLatestPosts() {
     try {
         const result = await fetchData(url);
@@ -99,6 +89,36 @@ export async function renderLatestPosts() {
 }
 
 
+
+
+
+
+export function createBlogText(title) {
+    const elementBlogText = document.createElement("div");
+    elementBlogText.classList.add("blog-card-text");
+    const h3Post = document.createElement("h3");
+    h3Post.classList.add("margin");
+    h3Post.innerText = `${title}`;
+    elementBlogText.appendChild(h3Post);
+
+    return elementBlogText;
+}
+
+export function createBtns() {
+    const btnsElement = document.createElement("div");
+    btnsElement.classList.add("carousel-btns");
+    return btnsElement;
+}
+
+
+export function createBlogCard(imageUrl) {
+    const elementBlogCard = document.createElement("div");
+    elementBlogCard.classList.add("blog-card");
+    elementBlogCard.style.backgroundImage = `url(${imageUrl})`;
+    return elementBlogCard;
+}
+
+
 export async function renderBlogs() {
     try {
         const result = await fetchData(url);
@@ -118,17 +138,17 @@ export async function renderBlogs() {
             const elementBlogCard =  createBlogCard(imageUrl);
             blogContainer.appendChild(elementBlogCard);
 
-            const elementPostText = createPostText(post.title.rendered);
-            elementBlogCard.appendChild(elementPostText);
+            const elementBlogText = createBlogText(post.title.rendered);
+            elementBlogCard.appendChild(elementBlogText);
 
-            const carouselBtnElement = createCarouselBtns();
-            elementPostText.appendChild(carouselBtnElement);
+            const btnsElement = createCarouselBtns();
+            elementBlogText.appendChild(btnsElement);
 
             const anchorBtn = createReadMoreBtn();
-            carouselBtnElement.appendChild(anchorBtn);
+            btnsElement.appendChild(anchorBtn);
 
             const anchorBtnCategory = createCategoryEmblem(category);
-            carouselBtnElement.appendChild(anchorBtnCategory);
+            btnsElement.appendChild(anchorBtnCategory);
         }
     } catch (error) {
         console.error("Error in renderLatestPosts:", error);
