@@ -1,0 +1,31 @@
+
+.flex-wrapper-blogpage { 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.blogContent li  { 
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.blogContent p { 
+    margin-bottom: 10px;
+
+}
+
+.aligncenter { 
+    margin-bottom: 0;
+}
+
+.has-text-align-center { 
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 14px;
+}

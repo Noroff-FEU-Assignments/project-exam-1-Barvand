@@ -8,6 +8,7 @@
 .blog-container { 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr; 
     width: 100%;
     flex-direction: row;
     gap: 30px;
@@ -16,15 +17,24 @@
 
 .blog-card { 
     min-width: 300px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
+    flex-direction: column;
+    
 }
 
 .blog-card img { 
     width: 100%;
+    object-position: center;
+    object-fit: cover;
+    height: 300px;
 }
 
+
+.published { 
+    margin: 5px;
+    color: grey;
+}
+
+.date-color { 
+    color: white;
+}

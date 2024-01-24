@@ -1,158 +1,118 @@
-export async function fetchCategory(termLink) {
-    const termResponse = await fetch(termLink); 
-    const termData = await termResponse.json(); 
-    return termData[0].name;
-}
 
-export async function fetchFeaturedMedia(featuredMediaLink) {
-    const mediaResponse = await fetch(featuredMediaLink);
-    return await mediaResponse.json();
-}
 
-export function createPostHolder(imageUrl) {
-    const elementPostHolder = document.createElement("div");
-    elementPostHolder.classList.add("post-holder");
-    elementPostHolder.style.backgroundImage = `url(${imageUrl})`;
-    return elementPostHolder;
-}
 
-export function createPostText(title) {
-    const elementPostText = document.createElement("div");
-    elementPostText.classList.add("post-text");
 
-    const h3Post = document.createElement("h3");
-    h3Post.classList.add("margin");
-    h3Post.innerText = `${title}`;
-    elementPostText.appendChild(h3Post);
+// This renders the whole index page. //
+const carousel = document.querySelector(".carousel-latest-posts")
 
-    return elementPostText;
-}
+export async function postHolderDiv(image, title, category) { 
+    const divElement = document.createElement("div")
+    divElement.classList.add("post-holder")
+    divElement.style.background = 'url(' + image + ')';
+    divElement.style.backgroundSize = 'cover';
+    carousel.appendChild(divElement)
+    
+    const textElement = document.createElement("div");
+    textElement.classList.add("post-text"); 
 
-export function createCarouselBtns() {
-    const carouselBtnElement = document.createElement("div");
-    carouselBtnElement.classList.add("carousel-btns");
-    return carouselBtnElement;
-}
+    const titleElement = document.createElement("h3"); 
+    titleElement.classList.add("margin"); 
+    titleElement.innerText = title; 
 
-export function createReadMoreBtn() {
-    const anchorBtn = document.createElement("a"); 
-    anchorBtn.classList.add("readmore-btn"); 
-    anchorBtn.innerText = `Read more...`; 
-    anchorBtn.href = "index.html";
-    return anchorBtn;
-}
+    const buttonsDivElement = document.createElement("div"); 
+    buttonsDivElement.classList.add("carousel-btns"); 
+    
+    const readMoreButton = document.createElement("a"); 
+    readMoreButton.classList.add("readmore-btn"); 
+    readMoreButton.href = "index.html";
+    readMoreButton.innerText = `Read more...`
 
-export function createCategoryEmblem(category) {
-    const anchorBtnCategory = document.createElement("a"); 
-    anchorBtnCategory.classList.add("category-emblem"); 
-    anchorBtnCategory.innerText = `${category}`; 
-    anchorBtnCategory.href = "index.html";
-    return anchorBtnCategory;
+    const categoryButton = document.createElement("a"); 
+    categoryButton.classList.add("category-emblem"); 
+    categoryButton.href = "index.html";
+    categoryButton.innerText = `${category}`
+    
+    buttonsDivElement.appendChild(readMoreButton)
+    buttonsDivElement.appendChild(categoryButton)
+    textElement.appendChild(titleElement); 
+    textElement.appendChild(buttonsDivElement)
+    divElement.appendChild(textElement);
 }
 
 
-export async function renderLatestPosts() {
-    try {
-        const result = await fetchData(url);
-        const carousel = document.querySelector(".carousel-latest-posts");
-        carousel.innerHTML = "";
+export async function renderCarousel() { 
+    const post = await fetchData(url)
+    
+    carousel.innerHTML = ""; 
+    for (let i = 0; i <post.length; i++) { 
+        const posts = post[i]; 
 
-        for (let i = 0; i < 3; i++) {
-            const post = result[i];
-            const featuredMediaLink = post._links["wp:featuredmedia"][0].href;
-            const termLink = post._links["wp:term"][0].href; 
+        const image = posts._embedded['wp:featuredmedia'][0].source_url; 
+        const category = posts._embedded['wp:term'][0][0].name;  
+        const title = posts.title.rendered; 
 
-            const category = await fetchCategory(termLink);
-            const mediaData = await fetchFeaturedMedia(featuredMediaLink);
-            const imageUrl = mediaData.source_url;
+        postHolderDiv(image, title, category) 
 
-            const elementPostHolder = createPostHolder(imageUrl);
-            carousel.appendChild(elementPostHolder);
-
-            const elementPostText = createPostText(post.title.rendered);
-            elementPostHolder.appendChild(elementPostText);
-
-            const carouselBtnElement = createCarouselBtns();
-            elementPostText.appendChild(carouselBtnElement);
-
-            const anchorBtn = createReadMoreBtn();
-            carouselBtnElement.appendChild(anchorBtn);
-
-            const anchorBtnCategory = createCategoryEmblem(category);
-            carouselBtnElement.appendChild(anchorBtnCategory);
-        }
-    } catch (error) {
-        console.error("Error in renderLatestPosts:", error);
-        const flexWrapper = document.querySelector(".flex-wrapper");
-        flexWrapper.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
+        
     }
 }
 
 
+// This renders the whole blog page //
+
+const blogContainer = document.querySelector(".blog-container") 
+
+export async function createBlogsPage(image, title, category, date, id) { 
+    
+
+    const divElement = document.createElement("div"); 
+    divElement.classList.add("blog-card")
+    blogContainer.appendChild(divElement)
+    
+    const anchorTag = document.createElement("a"); 
+    anchorTag.href = `blogpage.html?id=${id}`; 
+    divElement.appendChild(anchorTag)
+    
+    const imageElement = document.createElement("img")
+    imageElement.src = `${image}`; 
+    imageElement.alt = `${title}`; 
+    anchorTag.appendChild(imageElement)
+
+   
+    
+    const titleElement = document.createElement("h2"); 
+        titleElement.classList.add("margin"); 
+        titleElement.innerText = title; 
 
 
+    
+    const buttonsDivElement = document.createElement("div"); 
+        buttonsDivElement.classList.add("carousel-btns"); 
+        
+        const readMoreButton = document.createElement("a"); 
+        readMoreButton.classList.add("readmore-btn"); 
+        readMoreButton.href = "index.html";
+        readMoreButton.innerText = `Read more...`
+    
+        const categoryButton = document.createElement("a"); 
+        categoryButton.classList.add("category-emblem"); 
+        categoryButton.href = "index.html";
+        categoryButton.innerText = `${category}`
+    
+        const publishedElement = document.createElement("p"); 
+        publishedElement.classList.add("published"); 
+        publishedElement.innerText = `Published on `; 
 
-
-export function createBlogText(title) {
-    const elementBlogText = document.createElement("div");
-    elementBlogText.classList.add("blog-card-text");
-    const h3Post = document.createElement("h3");
-    h3Post.classList.add("margin");
-    h3Post.innerText = `${title}`;
-    elementBlogText.appendChild(h3Post);
-
-    return elementBlogText;
-}
-
-export function createBtns() {
-    const btnsElement = document.createElement("div");
-    btnsElement.classList.add("carousel-btns");
-    return btnsElement;
-}
-
-
-export function createBlogCard(imageUrl) {
-    const elementBlogCard = document.createElement("div");
-    elementBlogCard.classList.add("blog-card");
-    elementBlogCard.style.backgroundImage = `url(${imageUrl})`;
-    return elementBlogCard;
-}
-
-
-export async function renderBlogs() {
-    try {
-        const result = await fetchData(url);
-        const blogContainer = document.querySelector(".blog-container");
-        blogContainer.innerHTML = "";
-
-        for (let i = 0; i < result.length; i++) {
-            const post = result[i];
-
-            const featuredMediaLink = post._links["wp:featuredmedia"][0].href;
-            const termLink = post._links["wp:term"][0].href; 
-
-            const category = await fetchCategory(termLink);
-            const mediaData = await fetchFeaturedMedia(featuredMediaLink);
-            const imageUrl = mediaData.source_url;
-
-            const elementBlogCard =  createBlogCard(imageUrl);
-            blogContainer.appendChild(elementBlogCard);
-
-            const elementBlogText = createBlogText(post.title.rendered);
-            elementBlogCard.appendChild(elementBlogText);
-
-            const btnsElement = createCarouselBtns();
-            elementBlogText.appendChild(btnsElement);
-
-            const anchorBtn = createReadMoreBtn();
-            btnsElement.appendChild(anchorBtn);
-
-            const anchorBtnCategory = createCategoryEmblem(category);
-            btnsElement.appendChild(anchorBtnCategory);
+        const dateSpan = document.createElement("span");
+        dateSpan.innerText = ` // ${date}`;
+        dateSpan.classList.add("date-color")
+        publishedElement.appendChild(dateSpan)
+    
+        divElement.appendChild(publishedElement)
+        divElement.appendChild(titleElement); 
+        divElement.appendChild(buttonsDivElement); 
+        buttonsDivElement.appendChild(readMoreButton)
+        buttonsDivElement.appendChild(categoryButton)
+        
+        
         }
-    } catch (error) {
-        console.error("Error in renderLatestPosts:", error);
-        const flexWrapper = document.querySelector(".flex-wrapper");
-        flexWrapper.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
-    }
-}

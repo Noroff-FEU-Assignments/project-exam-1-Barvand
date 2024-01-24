@@ -2,6 +2,7 @@
 @import "/css/navigation.css"; 
 @import "/css/fonts.css"; 
 @import "/css/blogs.css"; 
+@import "/css/blog-page.css"; 
 
 Body { 
     background-color: black;
@@ -49,3 +50,4 @@ p {
     padding: 5px;
     text-decoration: none;
 }
+

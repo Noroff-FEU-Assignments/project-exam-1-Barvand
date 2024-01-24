@@ -1,198 +1,130 @@
-import { fetchData, fetchCategory, fetchFeaturedMedia } from "./fetch.js";
-import { createPostHolder, createPostText, createCarouselBtns, createReadMoreBtn, createCategoryEmblem, createBlogCard, createBlogText } from "./Functions/RenderHTML.js";
+import { fetchData } from "./fetch.js"
+import { postHolderDiv } from "./Functions/RenderHTML.js"
+import { createBlogsPage } from "./Functions/RenderHTML.js"
 
-const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts";
+const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
+const carousel = document.querySelector(".carousel-latest-posts")
+const textParent = document.querySelector(".post-holder")
 
+export async function renderCarousel() { 
+        const post = await fetchData(url)
+        
+        carousel.innerHTML = ""; 
+        for (let i = 0; i <3; i++) { 
+            const posts = post[i]; 
 
+            const image = posts._embedded['wp:featuredmedia'][0].source_url; 
+            const category = posts._embedded['wp:term'][0][0].name;  
+            const title = posts.title.rendered; 
 
-
-export async function renderLatestPosts() {
-    try {
-        const result = await fetchData(url);
-        const carousel = document.querySelector(".carousel-latest-posts");
-        carousel.innerHTML = "";
-
-        for (let i = 0; i < 3; i++) {
-            const post = result[i];
-            const featuredMediaLink = post._links["wp:featuredmedia"][0].href;
-            const termLink = post._links["wp:term"][0].href; 
-
-            const category = await fetchCategory(termLink);
-            const mediaData = await fetchFeaturedMedia(featuredMediaLink);
-            const imageUrl = mediaData.source_url;
-
-            const elementPostHolder = createPostHolder(imageUrl);
-            carousel.appendChild(elementPostHolder);
-
-            const elementPostText = createPostText(post.title.rendered);
-            elementPostHolder.appendChild(elementPostText);
-
-            const carouselBtnElement = createCarouselBtns();
-            elementPostText.appendChild(carouselBtnElement);
-
-            const anchorBtn = createReadMoreBtn();
-            carouselBtnElement.appendChild(anchorBtn);
-
-            const anchorBtnCategory = createCategoryEmblem(category);
-            carouselBtnElement.appendChild(anchorBtnCategory);
+            postHolderDiv(image, title, category) 
+           
+            
         }
-    } catch (error) {
-        console.error("Error in renderLatestPosts:", error);
-        const flexWrapper = document.querySelector(".flex-wrapper");
-        flexWrapper.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
     }
-}
-
-
-export async function renderBlogs() {
-    try {
-        const result = await fetchData(url);
-        const blogContainer = document.querySelector(".blog-container");
-        blogContainer.innerHTML = "";
-
-        for (let i = 0; i < result.length; i++) {
-            const post = result[i];
-
-            const featuredMediaLink = post._links["wp:featuredmedia"][0].href;
-            const termLink = post._links["wp:term"][0].href; 
-
-            const category = await fetchCategory(termLink);
-            const mediaData = await fetchFeaturedMedia(featuredMediaLink);
-            const imageUrl = mediaData.source_url;
-
-            const elementBlogCard =  createBlogCard(imageUrl);
-            blogContainer.appendChild(elementBlogCard);
-
-            const elementPostText = createPostText(post.title.rendered);
-            elementBlogCard.appendChild(elementPostText);
-
-            const carouselBtnElement = createCarouselBtns();
-            elementPostText.appendChild(carouselBtnElement);
-
-            const anchorBtn = createReadMoreBtn();
-            carouselBtnElement.appendChild(anchorBtn);
-
-            const anchorBtnCategory = createCategoryEmblem(category);
-            carouselBtnElement.appendChild(anchorBtnCategory);
-        }
-    } catch (error) {
-        console.error("Error in renderLatestPosts:", error);
-        const flexWrapper = document.querySelector(".flex-wrapper");
-        flexWrapper.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
-    }
-}
-
-// Call the function to fetch and render latest posts
-
 
 async function router() { 
-    const url = window.location.href; 
+    try {
+        const post = await fetchData(url);
+        const urls = window.location.href;
+        if (
+        !urls.includes("blogs")
+        )  renderCarousel()
+        } catch (error) {
+        console.error("Error in displayCorrectFunction:", error);
+      }}
+      router()
+    
+    
 
-    if (!url.includes("blogs")) {
-        renderLatestPosts();
-    } else {
-        renderBlogs();
+
+const blogContainer = document.querySelector(".blog-container") 
+ 
+async function displayBlogPage () {
+    const post = await fetchData(url)
+    blogContainer.innerHTML = "";
+
+    for (let i = 0; i <post.length; i++) { 
+        const posts = post[i]; 
+
+        const image = posts._embedded['wp:featuredmedia'][0].source_url; 
+        const category = posts._embedded['wp:term'][0][0].name;  
+        const title = posts.title.rendered;
+        const date = posts.date; 
+        const id = posts.id; 
+
+
+        const dateString = posts.date;
+        // Create a Date object from the string
+        const dateObject = new Date(dateString);
+        
+        // Get the day and date components
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = dateObject.toLocaleDateString('en-US', options);
+        
+        createBlogsPage(image, title, category, formattedDate, id)
     }
 }
 
-router();
+displayBlogPage(); 
 
 
-// async function renderLatestPosts() {
-//     try {
-//         const result = await fetchData(url);
+function handleRenderError(error) {
+    console.error("Error in renderLatestPosts:", error);
+    flexWrapper.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
+}
 
-//         carousel.innerHTML = "";
 
-//         for (let i = 0; i < 3; i++) {
-//             const post = result[i];
-//             const elementPostHolder = createPostHolder(post);
-//             carousel.appendChild(elementPostHolder);
 
-//             const category = await fetchCategory(post._links["wp:term"][0].href);
+
+const blogPage = document.querySelector(".blogpage"); 
+const queryString = document.location.search;
+const params = new URLSearchParams(queryString) 
+const id = params.get("id"); 
+
+const urlId = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed/" + id; 
+
+console.log(urlId)
+
+
+async function renderBlogPage() {
+    const post = await fetchData(urlId);
+    blogPage.innerHTML = "";
+
+    const queryStringId = id.toString();
+
+    for (let i = 0; i < post.length; i++) {
+        const posts = post[i];
+        const postId = posts.id.toString(); // Convert post id to string for comparison
+        
+        if (postId === queryStringId) {
+            const title = posts.title.rendered;
+            const content = posts.content.rendered; 
+            // Make sure the title is defined
+
+        
+            identicalTitle(title);
+            displayBlogContent(content)
             
-//             const imageUrl = await fetchImageUrl(post._links["wp:featuredmedia"][0].href);
+        }
+    }
+}
+        // const image = posts._embedded['wp:featuredmedia'][0].source_url; 
+        // const category = posts._embedded['wp:term'][0][0].name;  
+        
+        // const date = posts.date; 
+        // const id = posts.id; 
 
-//             setBackgroundImage(elementPostHolder, imageUrl);
+async function identicalTitle(title) {
+    const blogTitle = document.createElement("h1"); 
+    blogTitle.innerText = title; 
+    blogPage.appendChild(blogTitle);
+}
 
-//             const elementPostText = createPostText(post);
-//             elementPostHolder.appendChild(elementPostText);
-
-//             createReadMoreButton(elementPostText, "product.html");
-//             createCategoryEmblem(elementPostText, category, "index.html");
-//         }
-//     } catch (error) {
-//         handleRenderError(error);
-//     }
-// }
-
-// renderLatestPosts()
-
-// async function fetchData(url) {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//         throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     return await response.json();
-// }
-
-// async function fetchCategory(termLink) {
-//     const termResponse = await fetch(termLink);
-//     const termData = await termResponse.json();
-//     return termData[0].name;
-// }
-
-// async function fetchImageUrl(featuredMediaLink) {
-//     const mediaResponse = await fetch(featuredMediaLink);
-//     const mediaData = await mediaResponse.json();
-//     return mediaData.source_url;
-// }
-
-// function setBackgroundImage(element, imageUrl) {
-//     element.style.backgroundImage = `url(${imageUrl})`;
-// }
-
-// function createPostHolder(post) {
-//     const elementPostHolder = document.createElement("div");
-//     elementPostHolder.classList.add("post-holder");
-//     return elementPostHolder;
-// }
-
-// function createPostText(post) {
-//     const elementPostText = document.createElement("div");
-//     elementPostText.classList.add("post-text");
-
-//     const h3Post = document.createElement("h3");
-//     h3Post.classList.add("margin");
-//     h3Post.innerText = `${post.title.rendered}`;
-//     elementPostText.appendChild(h3Post);
-
-//     const carouselBtnElement = document.createElement("div");
-//     carouselBtnElement.classList.add("carousel-btns");
-//     elementPostText.appendChild(carouselBtnElement);
-
-//     return elementPostText;
-// }
-
-// function createReadMoreButton(parentElement, href) {
-//     const anchorBtn = document.createElement("a");
-//     anchorBtn.classList.add("readmore-btn");
-//     anchorBtn.innerText = "Read more...";
-//     anchorBtn.href = href;
-//     parentElement.appendChild(anchorBtn);
-// }
-
-// function createCategoryEmblem(parentElement, category, href) {
-//     const anchorBtnCategory = document.createElement("a");
-//     anchorBtnCategory.classList.add("category-emblem");
-//     anchorBtnCategory.innerText = category;
-//     anchorBtnCategory.href = href;
-//     parentElement.appendChild(anchorBtnCategory);
-// }
-
-// function handleRenderError(error) {
-//     console.error("Error in renderLatestPosts:", error);
-//     flexWrapper.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
-// }
-
-
+async function displayBlogContent(content) { 
+    const blogContent = document.createElement("div"); 
+    blogContent.classList.add("blogContent"); 
+    blogContent.innerHTML = content;
+    blogPage.appendChild(blogContent)
+}
+renderBlogPage()
