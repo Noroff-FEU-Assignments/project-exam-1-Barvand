@@ -24,4 +24,9 @@
     color:#F2C75C;
 }
 
+.navigation-bar a { 
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+}
 

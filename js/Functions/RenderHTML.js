@@ -5,7 +5,7 @@
 // This renders the whole index page. //
 const carousel = document.querySelector(".carousel-latest-posts")
 
-export async function postHolderDiv(image, title, category) { 
+export async function postHolderDiv(image, title, category, id ) { 
     const divElement = document.createElement("div")
     divElement.classList.add("post-holder")
     divElement.style.background = 'url(' + image + ')';
@@ -24,12 +24,12 @@ export async function postHolderDiv(image, title, category) {
     
     const readMoreButton = document.createElement("a"); 
     readMoreButton.classList.add("readmore-btn"); 
-    readMoreButton.href = "index.html";
+    readMoreButton.href = `blogpage.html?id=${id}`;
     readMoreButton.innerText = `Read more...`
 
     const categoryButton = document.createElement("a"); 
     categoryButton.classList.add("category-emblem"); 
-    categoryButton.href = "index.html";
+    categoryButton.href = `blogpage.html?id=${id}`;
     categoryButton.innerText = `${category}`
     
     buttonsDivElement.appendChild(readMoreButton)
@@ -50,8 +50,9 @@ export async function renderCarousel() {
         const image = posts._embedded['wp:featuredmedia'][0].source_url; 
         const category = posts._embedded['wp:term'][0][0].name;  
         const title = posts.title.rendered; 
+        const id = posts.id; 
 
-        postHolderDiv(image, title, category) 
+        postHolderDiv(image, title, category, id) 
 
         
     }
@@ -72,7 +73,7 @@ export async function createBlogsPage(image, title, category, date, id) {
     const anchorTag = document.createElement("a"); 
     anchorTag.href = `blogpage.html?id=${id}`; 
     divElement.appendChild(anchorTag)
-    
+
     const imageElement = document.createElement("img")
     imageElement.src = `${image}`; 
     imageElement.alt = `${title}`; 
@@ -91,12 +92,12 @@ export async function createBlogsPage(image, title, category, date, id) {
         
         const readMoreButton = document.createElement("a"); 
         readMoreButton.classList.add("readmore-btn"); 
-        readMoreButton.href = "index.html";
+        readMoreButton.href = `blogpage.html?id=${id}`;
         readMoreButton.innerText = `Read more...`
     
         const categoryButton = document.createElement("a"); 
         categoryButton.classList.add("category-emblem"); 
-        categoryButton.href = "index.html";
+        categoryButton.href = `blogpage.html?id=${id}`;
         categoryButton.innerText = `${category}`
     
         const publishedElement = document.createElement("p"); 

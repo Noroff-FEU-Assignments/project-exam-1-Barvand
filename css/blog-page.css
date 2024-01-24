@@ -29,3 +29,18 @@
     margin-top: 0;
     font-size: 14px;
 }
+
+.blog-title { 
+    margin-bottom: 0px;
+}
+
+.publishedBlog { 
+margin-top: 0;
+margin-bottom: 20px;
+font-style: italic;
+color: grey;
+}
+
+.date-color { 
+    color: #F2C75C; 
+}
