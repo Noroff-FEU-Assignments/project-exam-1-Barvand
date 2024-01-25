@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="css/styles.css" />
     <script
       src="https://kit.fontawesome.com/43c9e5e89e.js"
@@ -55,45 +56,54 @@
     <div class="whitespace"> </div>
 
     <h2 class="title-post"> Latest posts </h2>
-    <div class="carousel-latest-posts"> 
-    <div class="post-holder"> 
-        <div class="post-text"> 
-            <h3 class="margin">  </h3>
-            <p class="margin">  </p>
-            <div class="carousel-btns">
-            <a class="readmore-btn" href="#"> read more... </a>
-            <p class="category-emblem"> Category </p> 
-          </div>
-
-            </div>
-          </div>
-          <div class="post-holder"> 
-            <div class="post-text"> 
-                <h3 class="margin">  </h3>
-                <p class="margin">  </p>
-                <div class="carousel-btns">
-                <a class="readmore-btn" href="#"> read more... </a>
-                <p class="category-emblem"> Category </p> 
-              </div>
     
-                </div>
-              </div>
-              <div class="post-holder"> 
-                <div class="post-text"> 
-                    <h3 class="margin"> Hello </h3>
-                    <p class="margin">  Never leaving</p>
-                    <div class="carousel-btns">
-                    <a class="readmore-btn" href="#"> read more... </a>
-                    <a class="category-emblem"> Category </a> 
-                  </div>
-        
+
+        <div class="carousel-container"> 
+          <div class="slider-wrapper"> 
+            <button id="prev-slide" class="slide-button material-symbols-rounded">chevron_left</button>
+            <div class="image-list">
+              <div class="image-item"> 
+                <div class="post-holder"> 
+                  <div class="post-text"> 
+                      <h3 class="margin"> Hello </h3>
+                      <p class="margin">  Never leaving</p>
+                      <div class="carousel-btns">
+                      <a class="readmore-btn" href="#"> read more... </a>
+                      <a class="category-emblem"> Category </a> 
                     </div>
-                  </div>
-        </div>
+              </div>
+              </div>
+              </div>
+              <div class="image-item"> 
+              </div>
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+              <img src="images/trading.png" alt="" class="image-item">
+            </div>
+            <button id="next-slide" class="slide-button material-symbols-rounded">chevron_right</button>
+
+          </div>
+          <div class="slider-scrollbar"> 
+            <div class="scrollbar-track"> 
+              <div class="scrollbar-thumb">
+              </div>
+              </div>
+            </div>
+            </div>
+
+
+
+
+
 
         <div class="whitespace"> </div>
         <h3> RISK OF THE DAY </h3>
-        <p> Posted on <span class="posted-highlighted-colour"> *DATE* </span> By <span class="posted-highlighted-colour"> Author van den Berg </span> </p>
+        <p> Posted on <span class="posted-highlighted-colour date"> *DATE* </span> By <span class="posted-highlighted-colour author"> Author van den Berg </span> </p>
         <div class="whitespace"> </div>
         <p> The most visible risk when trading cryptocurrencies is the substantial price volatility exhibited 
           by this asset class. The creation of new tokens is very simple: often these will have low liquidity, 

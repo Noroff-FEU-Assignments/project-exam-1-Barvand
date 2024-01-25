@@ -1,16 +1,17 @@
+import { fetchData } from "../fetch.js";
 
-
+const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
 
 
 // This renders the whole index page. //
-const carousel = document.querySelector(".carousel-latest-posts")
+const imageContainer = document.querySelector(".image-list")
 
 export async function postHolderDiv(image, title, category, id ) { 
     const divElement = document.createElement("div")
     divElement.classList.add("post-holder")
     divElement.style.background = 'url(' + image + ')';
     divElement.style.backgroundSize = 'cover';
-    carousel.appendChild(divElement)
+    imageContainer.appendChild(divElement)
     
     const textElement = document.createElement("div");
     textElement.classList.add("post-text"); 
@@ -43,7 +44,7 @@ export async function postHolderDiv(image, title, category, id ) {
 export async function renderCarousel() { 
     const post = await fetchData(url)
     
-    carousel.innerHTML = ""; 
+    imageContainer.innerHTML = ""; 
     for (let i = 0; i <post.length; i++) { 
         const posts = post[i]; 
 
@@ -117,3 +118,29 @@ export async function createBlogsPage(image, title, category, date, id) {
         
         
         }
+
+
+
+
+        //renders the date and author on the Risk of the day post
+        export async function indexPost() { 
+            const post = await fetchData(url)
+            
+            for (let i = 0; i <3; i++) { 
+                const posts = post[i];
+                
+                const dateString = posts.date;
+                // Create a Date object from the string
+                const dateObject = new Date(dateString);
+                
+                // Get the day and date components
+                const options = { year: 'numeric', month: 'long' , day: 'numeric' };
+                const formattedDate = dateObject.toLocaleDateString('en-US', options);
+                const author = posts._embedded['author'][0].name;   
+        
+        const dateChange = document.querySelector(".date")
+        dateChange.innerHTML = formattedDate; 
+        const authorChange = document.querySelector(".author")
+        authorChange.innerHTML = author;
+        
+        }};
