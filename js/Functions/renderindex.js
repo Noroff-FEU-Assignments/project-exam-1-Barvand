@@ -7,10 +7,11 @@ const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
 const imageContainer = document.querySelector(".image-list")
 
 export async function postHolderDiv(image, title, category, id ) { 
-    const divElement = document.createElement("div")
+    const divElement = document.createElement("a")
     divElement.classList.add("post-holder")
     divElement.style.background = 'url(' + image + ')';
     divElement.style.backgroundSize = 'cover';
+    divElement.href = `blogpage.html?id=${id}`;
     imageContainer.appendChild(divElement)
     
     const textElement = document.createElement("div");
@@ -38,6 +39,8 @@ export async function postHolderDiv(image, title, category, id ) {
     textElement.appendChild(titleElement); 
     textElement.appendChild(buttonsDivElement)
     divElement.appendChild(textElement);
+
+    return divElement
 }
 
 const carousel = document.querySelector(".carousel-latest-posts")
