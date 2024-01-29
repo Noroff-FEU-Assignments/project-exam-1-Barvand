@@ -147,3 +147,22 @@ top: -2px;
     top: -10px; 
     bottom: -10px; 
 }
+
+
+
+@media (max-width: 1550px) {
+    .slider-wrapper .image-list {
+        grid-template-columns: repeat(10, 1fr); /* Adjust the number of columns */
+    }
+
+    .post-holder { 
+        min-width: 330px;
+    }
+}
+
+/* Media query for even smaller screens */
+@media (max-width: 766px) {
+    .post-holder { 
+        min-width: 250px;
+    }
+}

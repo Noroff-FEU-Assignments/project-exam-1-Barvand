@@ -14,14 +14,17 @@
     margin: auto;
     flex-direction: column;
     max-width: 1400px;
+    width: 90%;
+    
 }
 
 .navigation-bar { 
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px 0px 20px 0px; 
     list-style-type: none;
     color:#F2C75C;
+    box-sizing: border-box;
 }
 
 .navigation-bar a { 

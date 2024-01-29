@@ -36,7 +36,7 @@ export const initSlider = () => {
     }})
     
     // Slide images according to the slide button clicks
-    slideButtons.forEach(button =>{
+    slideButtons.forEach(button => {
         button.addEventListener("click", () => { 
             const direction = button.id === "prev-slide" ? -1 : 1; 
             const scrollAmount = imageList.clientWidth * direction;
