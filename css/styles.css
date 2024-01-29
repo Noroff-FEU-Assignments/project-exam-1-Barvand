@@ -6,6 +6,13 @@
 @import "/css/error-message.css"; 
 @import "/css/footer.css"; 
 
+
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 Body { 
     background-color: black;
     color: white;
@@ -23,6 +30,18 @@ a {
 
 .margin { 
     margin: 5px;
+}
+
+
+/* wrapper used in all pages */ 
+.flex-wrapper { 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;
+    min-height: 100vh;
+    height: 100%;
+    width: 90%;
 }
 
 .readmore-btn { 
