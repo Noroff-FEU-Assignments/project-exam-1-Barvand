@@ -18,11 +18,14 @@
     font-weight: 400;
     margin: 10px 0;
     list-style: none;
+    text-transform: none;
 }
 
 .contact-li i { 
     margin-right: 10px;
     color: #F2C75C;
+    
+    
     
 }
 .contact-form { 
@@ -46,7 +49,7 @@ textarea {
     width: 100%;
     border-radius: 5px;
     margin-top: 5px;
-    background-color: #F2C75C;
+    background-color: #b1995e;
     color: black;  
     
 }
@@ -57,10 +60,9 @@ textarea {
 }
 
 .contact-submit-btn { 
-    text-transform: capitalize;
-    color: black; 
+    color: white;
     text-align: center;
-    background-color: #b1995e;
+    background-color: black; 
     padding: 5px;
     width: 100%;
     border-radius: 5px;
@@ -68,6 +70,12 @@ textarea {
     font-family: "Asap Condensed", sans-serif;
     font-weight: 600;
     font-size: 16px;
+}
+
+
+.socials-title { 
+    margin-bottom: 0;
+    text-transform: none;
 }
 
 .socials { 
@@ -80,6 +88,7 @@ textarea {
 .socials i { 
     font-size: 56px;
 }
+
 
 
 @media (max-width: 1023px) {  
