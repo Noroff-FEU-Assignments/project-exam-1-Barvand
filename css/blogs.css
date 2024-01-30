@@ -17,7 +17,6 @@
 
 .blog-card { 
     min-width: 300px;
-    
     flex-direction: column;
     
 }
@@ -37,4 +36,8 @@
 
 .date-color { 
     color: white;
+}
+
+.information-container p { 
+    margin: 5px 0; 
 }

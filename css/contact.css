@@ -1,0 +1,99 @@
+.contact-container { 
+    display: flex;
+    width: 100%;
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.information-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contact-li { 
+    font-weight: 400;
+    margin: 10px 0;
+    list-style: none;
+}
+
+.contact-li i { 
+    margin-right: 10px;
+    color: #F2C75C;
+    
+}
+.contact-form { 
+    width: 50%;
+    background-color: #F2C75C;
+    padding: 20px;
+    color: black; 
+}
+
+input { 
+    width: 100%; 
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: #b1995e;
+    color: black; 
+
+}
+
+textarea { 
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: #F2C75C;
+    color: black;  
+    
+}
+
+.input-container  { 
+    padding: 5px 0;
+    margin: 5px 0;
+}
+
+.contact-submit-btn { 
+    text-transform: capitalize;
+    color: black; 
+    text-align: center;
+    background-color: #b1995e;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.socials { 
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.socials i { 
+    font-size: 56px;
+}
+
+
+@media (max-width: 1023px) {  
+
+
+
+
+.contact-container { 
+    flex-direction: column;
+    align-items: center;
+    gap: 50px   ;
+}
+
+.information-container, .contact-form { 
+    width: 100%;
+}
+}
