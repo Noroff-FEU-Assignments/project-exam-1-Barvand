@@ -9,11 +9,9 @@
 
 *{ 
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-
-*, *:before, *:after {
-    box-sizing: border-box;
-  }
 
 Body { 
     background-color: black;
@@ -31,9 +29,8 @@ a {
 }
 
 p { 
-    margin: 5px 0;
+    margin: 5px 0px;
 }
-
 .margin { 
     margin: 5px;
 }
