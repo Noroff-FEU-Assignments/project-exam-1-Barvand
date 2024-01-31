@@ -49,6 +49,9 @@ p {
     width: 90%;
 }
 
+.title-post { 
+    margin-bottom: 10px;
+}
 .readmore-btn { 
     text-transform: capitalize;
     font-weight: 600;
