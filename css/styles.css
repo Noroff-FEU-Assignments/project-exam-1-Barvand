@@ -16,6 +16,8 @@
 Body { 
     background-color: black;
     color: white;
+    min-height: 100vh;
+    font-family: "Asap Condensed", sans-serif;
     
 }
 
@@ -93,3 +95,6 @@ margin: auto;
   @keyframes l13{ 
     100%{transform: rotate(1turn)}
   }
+
+
+  

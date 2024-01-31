@@ -26,25 +26,32 @@
   </head>
 
   <header>
-    <img class="logo-header" src="images/digitalminerlogo.png" />
+    <img class="logo-header" src="images/digitalminerlogo.png">
     <div class="navigation-outline">
       <div class="navigation-container">
         <nav class="navigation-bar">
-          <li><i class="fa-solid fa-bars"></i></li>
-          <a href="blogs.html">blogs</a>
-          <a href="#">About us </a>
-          <a href="#">contact</a>
-          <li>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </li>
+          <ul class="sidebar"> 
+            <img class="logo-header-hamburger" src="images/digitalminerlogo.png">
+            <li> <a class="nav-link" href="blogs.html">blogs</a></li>
+            <li> <a class="nav-link" href="about.html">About us </a> </li>
+            <li> <a class="nav-link" href="contact.html">contact</a> </li>
+            <li> <i class="fa-solid fa-xmark"></i> </li>
+            </ul>
+          <ul class="nav-ul"> 
+          <li> <a class="nav-link" class="hideOnMobile"  href="blogs.html">blogs</a></li>
+          <li> <a class="nav-link" class="hideOnMobile" href="about.html">About us </a> </li>
+          <li> <a class="nav-link" class="hideOnMobile" href="contact.html">contact</a> </li>
+          <li> <a class="nav-link" class="hideOnMobile" href="charts.html"> Charts </a> </li>
+            <li> <a class="nav-link" class="hideOnMobile" href="heatmap.html"> Forex Heatmap </a></li>
+         <li class="hideOnMobile" id="hamburger-menu"><a href="#"><i class="fa-solid fa-bars"></i></a> </li>
+          </ul>
+          
         </nav>
-      </div>
     </div>
   </header>
-
   <body> 
   <div class="flex-wrapper"> 
-
+<div class="whitespace"></div>
   <h1 class="title-page"> 
     Blogs 
 </h1>

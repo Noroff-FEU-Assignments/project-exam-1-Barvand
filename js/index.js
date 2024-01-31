@@ -7,6 +7,12 @@ import { renderBlogPage } from "./Functions/renderblogpage.js";
 
 
 
+
+
+
+
+
+
 const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
 
 const errorContainer = document.querySelector(".flex-wrapper"); 
@@ -24,7 +30,7 @@ async function displayCorrectFunction() {
         !webUrl.includes("blogs") &&
         !webUrl.includes("blogpage")
       ) {
-        renderCarousel();
+        renderCarousel(); 
         
       } else if (webUrl.includes("blogs")) {
         displayBlogsPage(); 
@@ -50,3 +56,27 @@ async function displayCorrectFunction() {
   displayCorrectFunction();
 
   window.addEventListener("load", initSlider);
+  
+
+
+const clickMenu = document.querySelector("#hamburger-menu");
+const closeMenu = document.querySelector(".fa-xmark")
+
+function showSideBar () { 
+const sideBar = document.querySelector(".sidebar"); 
+sideBar.style.display = "flex"; 
+} 
+
+
+  clickMenu.addEventListener("click", showSideBar);
+  const sideBar = document.querySelector(".sidebar"); 
+
+ 
+
+function hideSideBar () { 
+  const sideBar = document.querySelector(".sidebar"); 
+  sideBar.style.display = "none"; 
+  } 
+
+
+  closeMenu.addEventListener("click", hideSideBar);

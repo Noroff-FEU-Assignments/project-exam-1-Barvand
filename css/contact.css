@@ -14,6 +14,10 @@
     flex-direction: column;
 }
 
+.information-container ul { 
+    padding: 20px 0;
+
+}
 .contact-li { 
     font-weight: 400;
     margin: 10px 0;

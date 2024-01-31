@@ -27,21 +27,62 @@
   </head>
 
   <header>
-    <img class="logo-header" src="images/digitalminerlogo.png" />
+    <img class="logo-header" src="images/digitalminerlogo.png">
     <div class="navigation-outline">
       <div class="navigation-container">
         <nav class="navigation-bar">
-          <a href="#"><i class="fa-solid fa-bars"></i></a>
-          <a href="blogs.html">blogs</a>
-          <a href="about.html">About us </a>
-          <a href="contact.html">contact</a>
-          <li>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </li>
+          <ul class="sidebar"> 
+            <img class="logo-header-hamburger" src="images/digitalminerlogo.png">
+            <li> <a class="nav-link" href="blogs.html">blogs</a></li>
+            <li> <a class="nav-link" href="about.html">About us </a> </li>
+            <li> <a class="nav-link" href="contact.html">contact</a> </li>
+            <li> <a class="nav-link" href="charts.html"> Charts </a> </li>
+            <li> <a class="nav-link" href="heatmap.html"> Forex Heatmap </a></li>
+            <li> <i class="fa-solid fa-xmark"></i> </li>
+            </ul>
+          <ul class="nav-ul"> 
+          <li> <a class="nav-link" class="hideOnMobile"  href="blogs.html">blogs</a></li>
+          <li> <a class="nav-link" class="hideOnMobile" href="about.html">About us </a> </li>
+          <li> <a class="nav-link" class="hideOnMobile" href="contact.html">contact</a> </li>
+          <li> <a class="nav-link" class="hideOnMobile" href="charts.html"> Charts </a> </li>
+            <li> <a class="nav-link" class="hideOnMobile" href="heatmap.html"> Forex Heatmap </a></li>
+         <li class="hideOnMobile" id="hamburger-menu"><a href="#"><i class="fa-solid fa-bars"></i></a> </li>
+          </ul>
+          
         </nav>
-      </div>
     </div>
   </header>
+
+
+     <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text"></span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    },
+    {
+      "proName": "BITSTAMP:ADAUSD",
+      "title": "Cardano"
+    }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": true,
+  "displayMode": "adaptive",
+  "colorTheme": "dark",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
 
   <div class="flex-wrapper"> 
 

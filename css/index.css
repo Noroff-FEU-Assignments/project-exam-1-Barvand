@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     background-image: url(/images/bearandbull-front.png);
-    background-position: center;
+    background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
@@ -18,12 +18,16 @@
     font-weight: 700;
 }
 
+.hero-title { 
+    font-size: 20px;
+}
+
 
 .carousel-latest-posts { 
     display: flex; 
     justify-content: space-between;
     width: 100%;
-    gap: 20px;
+    gap: 26px;
 }
 
 .post-holder { 
@@ -59,6 +63,7 @@
 .slider-wrapper { 
     position: relative;
 }
+
 .slider-wrapper .slide-button  { 
     position: absolute;
     top: 50%;
