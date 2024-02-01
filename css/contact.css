@@ -44,7 +44,6 @@ input {
     border-radius: 5px;
     height: 30px;
     margin-top: 5px;
-    background-color: #b1995e;
     color: black; 
 
 }
@@ -53,7 +52,6 @@ textarea {
     width: 100%;
     border-radius: 5px;
     margin-top: 5px;
-    background-color: #b1995e;
     color: black;  
     
 }

@@ -7,12 +7,6 @@ import { renderBlogPage } from "./Functions/renderblogpage.js";
 
 
 
-
-
-
-
-
-
 const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
 
 const errorContainer = document.querySelector(".flex-wrapper"); 
@@ -36,7 +30,9 @@ async function displayCorrectFunction() {
         displayBlogsPage(); 
       } else if (webUrl.includes("blogpage")) {
         renderBlogPage(); 
-      } 
+      } else if (webUrl.includes("contact")) { 
+       
+      }
     } catch (error) {
       console.error("Error in displayCorrectFunction:", error);
 
@@ -59,24 +55,21 @@ async function displayCorrectFunction() {
   
 
 
-const clickMenu = document.querySelector("#hamburger-menu");
-const closeMenu = document.querySelector(".fa-xmark")
-
-function showSideBar () { 
-const sideBar = document.querySelector(".sidebar"); 
-sideBar.style.display = "flex"; 
-} 
 
 
-  clickMenu.addEventListener("click", showSideBar);
-  const sideBar = document.querySelector(".sidebar"); 
 
- 
-
-function hideSideBar () { 
-  const sideBar = document.querySelector(".sidebar"); 
-  sideBar.style.display = "none"; 
-  } 
+  // Hamburger menu 
+ const hamburger = document.querySelector(".hamburger"); 
+ const navMenu = document.querySelector(".nav-menu"); 
 
 
-  closeMenu.addEventListener("click", hideSideBar);
+ hamburger.addEventListener("click", () => { 
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");  
+ })
+
+ document.querySelectorAll(".nav-link").forEach(n => n.
+  addEventListener("click", () => { 
+    hamburger.classList.remove("active"); 
+    navMenu.classList.remove("active"); 
+  }))

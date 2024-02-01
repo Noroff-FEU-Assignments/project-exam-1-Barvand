@@ -28,6 +28,7 @@ Body {
 
 a { 
     color: #F2C75C; 
+    text-decoration: none;
 }
 
 p { 
@@ -100,4 +101,8 @@ margin: auto;
   }
 
 
-  
+.input-error { 
+    color: red;
+    font-size: 14px;
+    font-weight: 500;
+}

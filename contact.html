@@ -21,39 +21,25 @@
       crossorigin="anonymous"
     ></script>
     <title>The digital miner</title>
-    <script defer src="/js/index.js" type="module"></script>
+    <script src="/js/Functions/form-validation/form.js" type="module"></script>
   </head>
 
 
   <header>
-    <a href="index.html">
-      <img class="logo-header" src="images/digitalminerlogo.png">
-      </a>
-    <div class="navigation-outline">
-      <div class="navigation-container">
-        <nav class="navigation-bar">
-          <ul class="sidebar"> 
-            <a href="index.html">
-            <img class="logo-header-hamburger" src="images/digitalminerlogo.png">
-          </a>
-            <li> <a class="nav-link" href="blogs.html">blogs</a></li>
-            <li> <a class="nav-link" href="about.html">About us </a> </li>
-            <li> <a class="nav-link" href="contact.html">contact</a> </li>
-            <li> <a class="nav-link" href="charts.html"> Charts </a> </li>
-            <li> <a class="nav-link" href="heatmap.html"> Forex Heatmap </a></li>
-            <li> <i class="fa-solid fa-xmark"></i> </li>
-            </ul>
-          <ul class="nav-ul"> 
-          <li> <a class="nav-link" class="hideOnMobile"  href="blogs.html">blogs</a></li>
-          <li> <a class="nav-link" class="hideOnMobile" href="about.html">About us </a> </li>
-          <li> <a class="nav-link" class="hideOnMobile" href="contact.html">contact</a> </li>
-          <li> <a class="nav-link" class="hideOnMobile" href="charts.html"> Charts </a> </li>
-            <li> <a class="nav-link" class="hideOnMobile" href="heatmap.html"> Forex Heatmap </a></li>
-         <li class="hideOnMobile" id="hamburger-menu"><a href="#"><i class="fa-solid fa-bars"></i></a> </li>
-          </ul>
-          
-        </nav>
-    </div>
+    <nav class="navbar"> 
+      <a class="nav-brand" href="index.html"> <img src="images/digitalminerlogo.jpg"> </a>
+        <ul class="nav-menu"> 
+            <li class="nav-item"> <a class="nav-link" href="blogs.html">blogs</a></li>
+            <li class="nav-item"> <a class="nav-link" href="about.html">About us </a> </li>
+            <li class="nav-item"> <a class="nav-link" href="contact.html">contact</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="charts.html"> Charts </a> </li>
+        </ul>
+        <div class="hamburger"> 
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          </div>
+            </nav>
   </header>
 
   <body> 
@@ -95,23 +81,29 @@
     <form id="form">
         <div class="input-container"> 
             <label for="name"> Name </label>
-            <input type="text" id="name"  name="name" required>
+            <input type="text" id="name"  name="name">
+            <p id="input-error-name" class="input-error"></p>
             </div>
             <div class="input-container"> 
                 <label for="email"> Email </label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email">
+                <p id="input-error-email" class="input-error"></p>
                 </div>
+                
                 <div class="input-container"> 
-                    <label for="subject"> subject </label>
-                    <input type="text" id="subject" name="subject" required>
+                    <label for="subject"> Subject </label>
+                    <input type="text" id="subject" name="subject">
+                    <p id="input-error-subject" class="input-error"></p>
                     </div>
                 <div class="input-container"> 
                     <label for="message"> Message </label>
-                    <textarea type="text" id="message" name="message" rows="4" required> Start writing. </textarea>
-
+                    <textarea type="text" id="message" name="message" rows="4"> Start writing. </textarea>
+                    <p id="input-error-message" class="input-error"></p>
                 </div>
+                <button type="submit" class="contact-submit-btn">Submit</button>
+
                 </form>
-                <button class="contact-submit-btn" href="#"> Submit </button>
+                
     </div>
     </div>
 
