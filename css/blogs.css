@@ -1,10 +1,4 @@
  
-
-.title-page { 
-    border-bottom: 1px white solid;
-
-}
-
 .blog-container { 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));

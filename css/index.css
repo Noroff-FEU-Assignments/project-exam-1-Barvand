@@ -18,10 +18,34 @@
     font-weight: 700;
 }
 
-.hero-title { 
+.hero-phrase { 
     font-size: 20px;
 }
 
+.hero-title { 
+    font-size: 32px;
+}
+
+.bull { 
+    color: rgb(14, 211, 14);
+}
+
+.bear {
+    color: red;
+}
+
+.hero-btn { 
+    text-transform: uppercase;
+    background-color: black;
+    padding: 10px 20px;
+    border: white 2px dotted;
+}
+
+.hero-btn:hover { 
+    color: black;
+    background-color: #F2C75C;
+    border: black 2px dotted;
+}
 
 .carousel-latest-posts { 
     display: flex; 
@@ -30,13 +54,48 @@
     gap: 26px;
 }
 
+.readmore-btn { 
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 5px;
+    padding-bottom: 5px;   
+}
+
+.readmore-btn:hover { 
+    color:#b48817
+}
+
+.carousel-btns { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-emblem { 
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: black;
+    border: 1px white solid; 
+    color: white;
+    align-self: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.category-emblem:hover {
+color: black;
+background-color: white;
+}
+
 .post-holder { 
     display: flex;
     min-width: 450px;
     height: 400px;
     width: 100%;
     text-decoration: none;
-    
+}
+
+.post-holder:hover { 
+    border: solid 3px white solid; 
 }
 
 .post-text {
