@@ -40,6 +40,7 @@ export async function renderBlogPage() {
             createContainerPublisher(formattedDate, author)
             displayBlogContent(content); 
 
+            console.log(content)
             
         }
     }
@@ -79,50 +80,52 @@ async function createContainerPublisher(date, author) {
 } 
 
 
-async function displayBlogContent(content) {
-    // Create a new DOMParser
-    const parser = new DOMParser();
-    // Parse the HTML string
-    const doc = parser.parseFromString(content, 'text/html');
+// async function displayBlogContent(content) { 
 
-    console.log(doc)
-    // Now you can access individual elements using standard DOM methods
-    const mainElement = doc.querySelector('main');
-    const paragraphs = doc.querySelectorAll('p');
-    const imageElement = doc.querySelector("img");
-    const headingElement = doc.querySelector("h2");
-    const subHeaders = doc.querySelectorAll("h3")
+//     // Create a new DOMParser
+//     const parser = new DOMParser();
 
-    const heading = document.createElement("h2");
-    heading.classList.add("blog-header");
-    heading.innerText = headingElement.textContent;
-    blogPage.appendChild(heading);
+//     // Parse the HTML string
+//     const doc = parser.parseFromString(content, 'text/html');
 
-    const image = document.createElement("img");
-    image.classList.add("blog-post-img");
-    image.src = imageElement.src;
-    blogPage.appendChild(image);
+//     // Now you can access individual elements using standard DOM methods
+//     const mainElement = doc.querySelector('main');
+//     const paragraphs = doc.querySelectorAll('p');
+//     const imageElement = doc.querySelector("img");
+//     const headingElement = doc.querySelector("h2"); 
+//     const headingElementh3 = doc.querySelector("h3")
+ 
+   
+//     const heading = document.createElement("h2"); 
+//     heading.classList.add("blog-header"); 
+//     heading.innerText = headingElement.textContent; 
+//     blogPage.appendChild(heading)
 
-    // Loop through h3 elements and paragraphs making sure that the index of the heading and paragraphs are the same. 
-    for (let i = 0; i < subHeaders.length; i++) {
-        // Create a container for each h3 and its matching paragraph
-        const sectionContainer = document.createElement('div');
-        sectionContainer.classList.add('section-container');
+//     const headingh3 = document.createElement("h3"); 
+//     heading.classList.add("blog-headerh3"); 
+//     headingh3.innerText = headingElementh3.textContent; 
+//     blogPage.appendChild(headingh3)
 
-        // Create an h3 for each header
-        const headingh3 = document.createElement('h3');
-        headingh3.classList.add('blog-header-h3');
-        headingh3.innerText = subHeaders[i].textContent;
-        sectionContainer.appendChild(headingh3);
+//     const image = document.createElement("img"); 
+//     image.classList.add("blog-post-img"); 
+//     image.src = imageElement.src;
+//     blogPage.appendChild(image)
 
-        // Creating a paragraph with the matching header
-        const blogParagraph = document.createElement('p');
-        blogParagraph.classList.add('blog-paragraph');
-        blogParagraph.innerHTML = paragraphs[i].innerHTML;
-        sectionContainer.appendChild(blogParagraph);
+//     // Example: Loop through paragraphs and log their text content
+//     paragraphs.forEach((paragraph, index) => {
+//         const blogContent = document.createElement("p"); 
+//         blogContent.classList.add("blog-paragraph"); 
+//         blogContent.innerHTML = paragraph.innerHTML; // Set the innerHTML to the current paragraph's HTML
+//         blogPage.appendChild(blogContent);
+//     });
 
-        // Append the section container to the blog page
-        blogPage.appendChild(sectionContainer);
-        
-    }
-};
+
+// }
+
+
+async function displayBlogContent(content) { 
+    const blogContent = document.createElement("div"); 
+    blogContent.classList.add("blogContent"); 
+    blogContent.innerHTML = content;
+    blogPage.appendChild(blogContent)
+}
