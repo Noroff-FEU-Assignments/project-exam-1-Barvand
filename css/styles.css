@@ -38,6 +38,9 @@ p {
     margin: 5px;
 }
 
+.white-line { 
+    border-top: 2px solid rgba(255, 255, 255, 0.37);
+}
 
 /* wrapper used in all pages */ 
 .flex-wrapper { 
@@ -45,7 +48,6 @@ p {
     display: flex;
     flex-direction: column;
     max-width: 1400px;
-    min-height: 100vh;
     height: 100%;
     width: 90%;
 }

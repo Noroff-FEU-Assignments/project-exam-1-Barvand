@@ -1,7 +1,7 @@
  
 .blog-container { 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-template-rows: 0.5fr; 
     width: 100%;
     flex-direction: row;
@@ -10,9 +10,11 @@
 }
 
 .blog-card { 
-    min-width: 300px;
     flex-direction: column;
-    
+}
+
+.blog-card img:hover { 
+    border: solid 2px #F2C75C;
 }
 
 .blog-card img { 
@@ -34,4 +36,10 @@
 
 .information-container p { 
     margin: 5px 0; 
+}
+
+@media (max-width:450px ) { 
+    .blog-container { 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
 }
