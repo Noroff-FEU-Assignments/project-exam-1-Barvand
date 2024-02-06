@@ -18,6 +18,10 @@ Body {
     color: white;
     min-height: 100vh;
     font-family: "Asap Condensed", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
     
 }
 
@@ -50,6 +54,7 @@ p {
     max-width: 1400px;
     height: 100%;
     width: 90%;
+    flex: 1;
 }
 
 .title-post { 

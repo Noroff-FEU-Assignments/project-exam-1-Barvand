@@ -38,6 +38,19 @@
     margin: 5px 0; 
 }
 
+.button-container {
+    align-self: center;
+    margin-top: 50px;
+}
+#load-more-btn { 
+    align-self: center;
+    padding: 10px 20px; 
+    background-color: #F2C75C;
+    border: white 2px solid ;
+    color: black;
+    font-weight: 600;
+}
+
 @media (max-width:450px ) { 
     .blog-container { 
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

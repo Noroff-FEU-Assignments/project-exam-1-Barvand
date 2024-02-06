@@ -6,12 +6,11 @@ export const initSlider = () => {
     const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth; 
 
     // handle scrollbar thumb drag
-    scrollBarThumb.addEventListener("mousedown", (e) => {{ 
+    scrollBarThumb.addEventListener("mousedown", (e) => { 
         const startX = e.clientX; 
         const thumbPosition = scrollBarThumb.offsetLeft; 
 
-
-        // update thumb positon on mouse move
+        // update thumb position on mouse move
         const handleMouseMove = (e) => { 
             const deltaX = e.clientX - startX; 
             const newThumbPosition = thumbPosition + deltaX; 
@@ -32,8 +31,7 @@ export const initSlider = () => {
         // add event listeners for drag interaction
         document.addEventListener("mousemove", handleMouseMove); 
         document.addEventListener("mouseup", handleMouseUp); 
-
-    }})
+    });
     
     // Slide images according to the slide button clicks
     slideButtons.forEach(button => {
@@ -55,6 +53,7 @@ export const initSlider = () => {
         const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollBar.clientWidth - scrollBarThumb.offsetWidth);
         scrollBarThumb.style.left = `${thumbPosition}px`; 
     }
+
     imageList.addEventListener("scroll", () => {
         handleSlideButtons(); 
         updateScrollThumbPosition(); 

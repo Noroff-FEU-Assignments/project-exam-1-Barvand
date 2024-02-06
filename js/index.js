@@ -1,57 +1,50 @@
 import { fetchData } from "./fetch.js"
 import { postHolderDiv, renderCarousel } from "./Functions/renderindex.js"
 import { initSlider } from "./Functions/carousel.js"; 
-import { displayBlogsPage } from "./Functions/renderblog.js";
+import { displayBlogsPage } from "./Functions/renderblogs.js";
 import { renderBlogPage } from "./Functions/renderblogpage.js";
 
 
 
 
-const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
+const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
 
-const errorContainer = document.querySelector(".flex-wrapper"); 
-const errorContainerBlogPage = document.querySelector(".flex-wrapper-blogpage")
-
-
+const errorContainer = document.querySelector(".flex-wrapper");
+const errorContainerBlogPage = document.querySelector(".flex-wrapper-blogpage");
 
 async function displayCorrectFunction() {
     try {
-      const post = await fetchData(url);
-      const webUrl = window.location.href;
-  
-      // I organized the index page like this, as before I initialized it as if url includes INDEX and this caused some bugs and some functions not to display correctly.
-      if (
-        !webUrl.includes("blogs") &&
-        !webUrl.includes("blogpage")
-      ) {
-        renderCarousel(); 
-        
-      } else if (webUrl.includes("blogs")) {
-        displayBlogsPage(); 
-      } else if (webUrl.includes("blogpage")) {
-        renderBlogPage(); 
-      } else if (webUrl.includes("contact")) { 
-       
-      }
-    } catch (error) {
-      console.error("Error in displayCorrectFunction:", error);
+        const post = await fetchData(url);
+        const webUrl = window.location.href;
 
-      if (errorContainer) { 
-        errorContainer.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
-         } else { 
-            if (errorContainerBlogPage) { 
+        if (!webUrl.includes("blogs") && !webUrl.includes("blogpage") && !webUrl.includes("about") 
+        && !webUrl.includes("charts") && !webUrl.includes("contact")) {
+            renderCarousel();
+            initSlider();
+        } else if (webUrl.includes("blogs")) {
+           await displayBlogsPage(); // Make sure displayBlogsPage completes before moving on
+        } else if (webUrl.includes("blogpage")) {
+            renderBlogPage();
+        } else if (webUrl.includes("contact")) {
+            // Handle contact page logic if needed
+        }
+
+        // After fetching data and rendering, initialize the slider
+        
+    } catch (error) {
+        console.error("Error in displayCorrectFunction:", error);
+
+        if (errorContainer) {
+            errorContainer.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
+        } else {
+            if (errorContainerBlogPage) {
                 errorContainerBlogPage.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
             }
-         }
-      
-        
-      }
+        }
     }
-  
-  
-  displayCorrectFunction();
+}
 
-  window.addEventListener("load", initSlider);
+displayCorrectFunction();
   
 
 

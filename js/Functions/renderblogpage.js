@@ -1,12 +1,13 @@
 
 import { fetchData } from "../fetch.js";
 
-const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
+const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard";
 
 const blogPage = document.querySelector(".blogpage"); 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString) 
 const id = params.get("id"); 
+
 
 const publishDateParent = document.querySelector(".blog-title");
 
@@ -19,28 +20,23 @@ export async function renderBlogPage() {
     for (let i = 0; i < post.length; i++) {
         const posts = post[i];
         const postId = posts.id.toString();
-         
 
-        const dateString = posts.date;
-        // Create a Date object from the string
-        const dateObject = new Date(dateString);
-        
-        // Get the day and date components
-        const options = { year: 'numeric', month: 'long' , day: 'numeric' };
-        const formattedDate = dateObject.toLocaleDateString('en-US', options);
-
-
+    
         if (postId === queryStringId) {
-            const title = posts.title.rendered;
-            const content = posts.content.rendered; 
-            
-            const author = posts._embedded['author'][0].name;   
-        
-            identicalTitle(title);
-            createContainerPublisher(formattedDate, author)
-            displayBlogContent(content); 
+            const title = posts.acf.title;
+            const date = posts.acf.post_date; 
+            const author = posts.acf.author; 
+            const image = posts.acf.post_image;   
 
-            console.log(content)
+            console.log()
+
+    
+            identicalTitle(title);
+            createContainerPublisher(date, author)
+            displayBlogContent(posts); 
+        
+
+
             
         }
     }
@@ -64,7 +60,7 @@ async function createContainerPublisher(date, author) {
     publishContainer.appendChild(publishedDate)
 
     const dateSpan = document.createElement("span");
-    dateSpan.innerText = ` // ${date}`;
+    dateSpan.textContent = `${date}`;
     dateSpan.classList.add("date-color")
     publishedDate.appendChild(dateSpan)
 
@@ -80,52 +76,115 @@ async function createContainerPublisher(date, author) {
 } 
 
 
-// async function displayBlogContent(content) { 
+async function displayBlogContent(posts) { 
 
-//     // Create a new DOMParser
-//     const parser = new DOMParser();
+    const subHeader = document.createElement("h2"); 
+    subHeader.classList.add("blog-header"); 
+    subHeader.textContent = posts.acf.subheader; 
+    blogPage.appendChild(subHeader)
 
-//     // Parse the HTML string
-//     const doc = parser.parseFromString(content, 'text/html');
+    const image = document.createElement("img"); 
+    image.classList.add("blog-post-img"); 
+    image.src = posts.acf.post_image;
+    image.alt = posts.acf.title; 
+    image.onclick = function() {
+        renderModal(image.src, image.alt);
+    }
 
-//     // Now you can access individual elements using standard DOM methods
-//     const mainElement = doc.querySelector('main');
-//     const paragraphs = doc.querySelectorAll('p');
-//     const imageElement = doc.querySelector("img");
-//     const headingElement = doc.querySelector("h2"); 
-//     const headingElementh3 = doc.querySelector("h3")
- 
-   
-//     const heading = document.createElement("h2"); 
-//     heading.classList.add("blog-header"); 
-//     heading.innerText = headingElement.textContent; 
-//     blogPage.appendChild(heading)
+    blogPage.appendChild(image)
 
-//     const headingh3 = document.createElement("h3"); 
-//     heading.classList.add("blog-headerh3"); 
-//     headingh3.innerText = headingElementh3.textContent; 
-//     blogPage.appendChild(headingh3)
+    const heading1 = document.createElement("h3"); 
+    heading1.classList.add("blog-header-h3"); 
+    heading1.textContent = posts.acf.heading1; 
+    blogPage.appendChild(heading1)
 
-//     const image = document.createElement("img"); 
-//     image.classList.add("blog-post-img"); 
-//     image.src = imageElement.src;
-//     blogPage.appendChild(image)
+    const paragraph1 = document.createElement("p"); 
+    paragraph1.classList.add("blog-paragraph"); 
+    paragraph1.textContent = posts.acf.paragraph1; 
+    blogPage.appendChild(paragraph1)
 
-//     // Example: Loop through paragraphs and log their text content
-//     paragraphs.forEach((paragraph, index) => {
-//         const blogContent = document.createElement("p"); 
-//         blogContent.classList.add("blog-paragraph"); 
-//         blogContent.innerHTML = paragraph.innerHTML; // Set the innerHTML to the current paragraph's HTML
-//         blogPage.appendChild(blogContent);
-//     });
+    const heading2 = document.createElement("h3"); 
+    heading2.classList.add("blog-header-h3"); 
+    heading2.textContent = posts.acf.heading2; 
+    blogPage.appendChild(heading2)
+    
+    const paragraph2 = document.createElement("p"); 
+    paragraph2.classList.add("blog-paragraph"); 
+    paragraph2.textContent = posts.acf.paragraph2; 
+    blogPage.appendChild(paragraph2)
 
+    const heading3 = document.createElement("h3"); 
+    heading3.classList.add("blog-header-h3"); 
+    heading3.textContent = posts.acf.heading3; 
+    blogPage.appendChild(heading3)
 
-// }
+    const paragraph3 = document.createElement("p"); 
+    paragraph3.classList.add("blog-paragraph"); 
+    paragraph3.textContent = posts.acf.paragraph3; 
+    blogPage.appendChild(paragraph3)
 
+    const heading4 = document.createElement("h3"); 
+    heading4.classList.add("blog-header-h3"); 
+    heading4.textContent = posts.acf.heading4; 
+    blogPage.appendChild(heading4)
 
-async function displayBlogContent(content) { 
-    const blogContent = document.createElement("div"); 
-    blogContent.classList.add("blogContent"); 
-    blogContent.innerHTML = content;
-    blogPage.appendChild(blogContent)
+    const paragraph4 = document.createElement("p"); 
+    paragraph4.classList.add("blog-paragraph"); 
+    paragraph4.textContent = posts.acf.paragraph4; 
+    blogPage.appendChild(paragraph4)
+
+    const heading5 = document.createElement("h3"); 
+    heading5.classList.add("blog-header-h3"); 
+    heading5.textContent = posts.acf.heading5; 
+    blogPage.appendChild(heading5)
+
+    const paragraph5 = document.createElement("p"); 
+    paragraph5.classList.add("blog-paragraph"); 
+    paragraph5.textContent = posts.acf.paragraph5; 
+    blogPage.appendChild(paragraph5)
+    
+
+    
 }
+
+
+
+// this creates the modal div 
+function renderModal(imageSrc, title) {
+    const modalDiv = document.createElement("div");
+    modalDiv.classList.add("modal"); 
+    modalDiv.id = "myModal"; 
+    blogPage.appendChild(modalDiv); 
+
+    // onclick function to remove the modal from the screen when pressing the image/ div container
+    modalDiv.onclick = function() { 
+        modalDiv.remove();
+    } 
+ 
+    // this creates the X icon by using a Span
+    const close = document.createElement("span"); 
+    close.classList.add("close"); 
+    close.innerHTML = `&times;`;
+    modalDiv.appendChild(close);
+
+    // click function to remove the modal when clicked on the X icon. 
+    close.onclick = function() {
+        modalDiv.remove();
+    }
+ 
+    // the actual image of the modal. 
+    const modalImage = document.createElement("img"); 
+    modalImage.classList.add("modal-image"); 
+    modalImage.src = imageSrc; // Assign the image source
+    modalImage.alt = title; 
+    modalDiv.appendChild(modalImage); 
+
+     // the alt text of the image shown under the image when modal is opened. 
+    const modalAlt = document.createElement("p"); 
+    modalAlt.id = "caption"; 
+    modalAlt.innerText = title; 
+    modalDiv.appendChild(modalAlt); 
+    }
+
+
+

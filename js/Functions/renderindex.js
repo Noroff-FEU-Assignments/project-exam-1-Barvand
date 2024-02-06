@@ -1,6 +1,6 @@
 import { fetchData } from "../fetch.js";
 
-const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?_embed";
+const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard";
 
 
 // This renders the whole index page. //
@@ -49,11 +49,11 @@ export async function renderCarousel() {
     const post = await fetchData(url)
     
     imageContainer.innerHTML = ""; 
-    for (let i = 0; i <post.length; i++) { 
+    for (let i = 0; i < 8; i++) { 
         const posts = post[i]; 
 
-        const image = posts._embedded['wp:featuredmedia'][0].source_url; 
-        const category = posts._embedded['wp:term'][0][0].name;  
+        const image = posts.acf.post_image; 
+        const category = posts.acf.category;  
         const title = posts.title.rendered; 
         const id = posts.id; 
 
@@ -62,6 +62,5 @@ export async function renderCarousel() {
         
     }
 }
-
 
        
