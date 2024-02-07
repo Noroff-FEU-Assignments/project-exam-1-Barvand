@@ -18,7 +18,7 @@ async function displayCorrectFunction() {
         const webUrl = window.location.href;
 
         if (!webUrl.includes("blogs") && !webUrl.includes("blogpage") && !webUrl.includes("about") 
-        && !webUrl.includes("charts") && !webUrl.includes("contact")) {
+        && !webUrl.includes("charts") && !webUrl.includes("contact")  && !webUrl.includes("warning")) {
             renderCarousel();
             initSlider();
         } else if (webUrl.includes("blogs")) {
@@ -27,6 +27,8 @@ async function displayCorrectFunction() {
             renderBlogPage();
         } else if (webUrl.includes("contact")) {
             // Handle contact page logic if needed
+        } else if (webUrl.includes("warning")) { 
+
         }
 
         // After fetching data and rendering, initialize the slider

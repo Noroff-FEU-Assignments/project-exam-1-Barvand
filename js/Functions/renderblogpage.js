@@ -14,7 +14,7 @@ const publishDateParent = document.querySelector(".blog-title");
 export async function renderBlogPage() {
     const post = await fetchData(url);
     blogPage.innerHTML = "";
-    
+
     const queryStringId = id.toString();
 
     for (let i = 0; i < post.length; i++) {
@@ -86,7 +86,7 @@ async function displayBlogContent(posts) {
     const image = document.createElement("img"); 
     image.classList.add("blog-post-img"); 
     image.src = posts.acf.post_image;
-    image.alt = posts.acf.title; 
+    image.alt = posts.acf.alt; 
     image.onclick = function() {
         renderModal(image.src, image.alt);
     }

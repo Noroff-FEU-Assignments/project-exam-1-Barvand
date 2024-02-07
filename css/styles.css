@@ -6,6 +6,7 @@
 @import "/css/error-message.css"; 
 @import "/css/footer.css"; 
 @import "/css/contact.css";
+@import "/css/about.css"; 
 
 *{ 
     box-sizing: border-box;

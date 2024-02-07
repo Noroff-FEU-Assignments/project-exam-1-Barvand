@@ -7,12 +7,18 @@ const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=sta
 const imageContainer = document.querySelector(".image-list")
 
 export async function postHolderDiv(image, title, category, id ) { 
-    const divElement = document.createElement("a")
+
+    const anchor = document.createElement("a"); 
+    anchor.href = `blogpage.html?id=${id}`;
+    anchor.classList.add("post-link")
+    imageContainer.appendChild(anchor);
+    
+
+    const divElement = document.createElement("div")
     divElement.classList.add("post-holder")
     divElement.style.background = 'url(' + image + ')';
     divElement.style.backgroundSize = 'cover';
-    divElement.href = `blogpage.html?id=${id}`;
-    imageContainer.appendChild(divElement)
+    anchor.appendChild(divElement)
     
     const textElement = document.createElement("div");
     textElement.classList.add("post-text"); 
@@ -49,7 +55,7 @@ export async function renderCarousel() {
     const post = await fetchData(url)
     
     imageContainer.innerHTML = ""; 
-    for (let i = 0; i < 8; i++) { 
+    for (let i = 0; i < 9; i++) { 
         const posts = post[i]; 
 
         const image = posts.acf.post_image; 
@@ -62,5 +68,3 @@ export async function renderCarousel() {
         
     }
 }
-
-       

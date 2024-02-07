@@ -47,7 +47,7 @@ export const initSlider = () => {
         slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "block"; 
     }
 
-    // update scroll thumb positoin based on image scroll 
+    // update scroll thumb position based on image scroll 
     const updateScrollThumbPosition = () => { 
         const scrollPosition = imageList.scrollLeft; 
         const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollBar.clientWidth - scrollBarThumb.offsetWidth);

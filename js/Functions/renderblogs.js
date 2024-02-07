@@ -39,8 +39,9 @@ function displayPosts(posts) {
         const title = post.acf.title;
         const date = post.acf.post_date;
         const id = post.id;
+        const alt = post.acf.alt
 
-        createBlogsPage(image, title, category, date, id);
+        createBlogsPage(image, title, category, date, id, alt);
     }
 }
 
@@ -56,7 +57,7 @@ function getLastPosts() {
 
 
 // function to render the html for the blog page with the parameters included. 
-export async function createBlogsPage(image, title, category, date, id) { 
+export async function createBlogsPage(image, title, category, date, id, alt) { 
     
 
     const divElement = document.createElement("div"); 
@@ -69,7 +70,7 @@ export async function createBlogsPage(image, title, category, date, id) {
 
     const imageElement = document.createElement("img")
     imageElement.src = `${image}`; 
-    imageElement.alt = `${title}`; 
+    imageElement.alt = `${alt}`; 
     anchorTag.appendChild(imageElement)
     
     const titleElement = document.createElement("h2"); 
