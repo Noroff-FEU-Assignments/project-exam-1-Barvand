@@ -1,8 +1,7 @@
  
 .blog-container { 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-template-rows: 0.5fr; 
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
     width: 100%;
     flex-direction: row;
     gap: 30px;
@@ -34,9 +33,6 @@
     color: white;
 }
 
-.information-container p { 
-    margin: 5px 0; 
-}
 
 .button-container {
     align-self: center;
@@ -56,6 +52,9 @@
     background-color: white;
     color: black; 
     cursor: pointer;
+}
+
+.text-blogs { 
 }
 
 @media (max-width:450px ) { 

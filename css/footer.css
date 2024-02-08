@@ -20,7 +20,8 @@ footer ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; 
-    padding: 50px;
+    padding: 20px 0 0 0;
+
     text-align: center;
 }
 

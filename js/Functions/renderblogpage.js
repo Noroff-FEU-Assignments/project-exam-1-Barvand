@@ -1,15 +1,15 @@
 
 import { fetchData } from "../fetch.js";
+import { returnButton } from "../utils.js";
+import { renderModal } from "../modal.js";
 
 const url = "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard";
 
+const blogPageFlexContainer = document.querySelector(".flex-wrapper-blogpage")
 const blogPage = document.querySelector(".blogpage"); 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString) 
 const id = params.get("id"); 
-
-
-const publishDateParent = document.querySelector(".blog-title");
 
 export async function renderBlogPage() {
     const post = await fetchData(url);
@@ -28,20 +28,16 @@ export async function renderBlogPage() {
             const author = posts.acf.author; 
             const image = posts.acf.post_image;   
 
-            console.log()
-
-    
             identicalTitle(title);
             createContainerPublisher(date, author)
             displayBlogContent(posts); 
-        
-
-
-            
+            returnButton("Return to blogs", "blogs.html", blogPageFlexContainer)
         }
     }
-}
+}; 
     
+
+// this renders the title 
 async function identicalTitle(title) {
     const blogTitle = document.createElement("h1"); 
     blogTitle.classList.add("blog-title")
@@ -49,6 +45,8 @@ async function identicalTitle(title) {
     blogPage.appendChild(blogTitle);
 }
 
+
+// This renders the date and the author
 async function createContainerPublisher(date, author) { 
     const publishContainer = document.createElement("div"); 
     publishContainer.classList.add("publish-container")
@@ -76,6 +74,7 @@ async function createContainerPublisher(date, author) {
 } 
 
 
+// This renders the actual html blog content + onclick modal function 
 async function displayBlogContent(posts) { 
 
     const subHeader = document.createElement("h2"); 
@@ -83,15 +82,16 @@ async function displayBlogContent(posts) {
     subHeader.textContent = posts.acf.subheader; 
     blogPage.appendChild(subHeader)
 
-    const image = document.createElement("img"); 
-    image.classList.add("blog-post-img"); 
-    image.src = posts.acf.post_image;
-    image.alt = posts.acf.alt; 
-    image.onclick = function() {
-        renderModal(image.src, image.alt);
-    }
+    const imageElement = document.createElement("img"); 
+    imageElement.classList.add("blog-post-img"); 
+    imageElement.src = posts.acf.post_image;
+    imageElement.alt = posts.acf.alt; 
+    blogPage.appendChild(imageElement)
 
-    blogPage.appendChild(image)
+    // onclick function that renders the modal once clicked on the image. 
+    imageElement.onclick = function() {
+        renderModal(imageElement.src, imageElement.alt, blogPage);
+    }
 
     const heading1 = document.createElement("h3"); 
     heading1.classList.add("blog-header-h3"); 
@@ -142,49 +142,10 @@ async function displayBlogContent(posts) {
     paragraph5.classList.add("blog-paragraph"); 
     paragraph5.textContent = posts.acf.paragraph5; 
     blogPage.appendChild(paragraph5)
-    
-
-    
 }
 
 
 
-// this creates the modal div 
-function renderModal(imageSrc, title) {
-    const modalDiv = document.createElement("div");
-    modalDiv.classList.add("modal"); 
-    modalDiv.id = "myModal"; 
-    blogPage.appendChild(modalDiv); 
-
-    // onclick function to remove the modal from the screen when pressing the image/ div container
-    modalDiv.onclick = function() { 
-        modalDiv.remove();
-    } 
- 
-    // this creates the X icon by using a Span
-    const close = document.createElement("span"); 
-    close.classList.add("close"); 
-    close.innerHTML = `&times;`;
-    modalDiv.appendChild(close);
-
-    // click function to remove the modal when clicked on the X icon. 
-    close.onclick = function() {
-        modalDiv.remove();
-    }
- 
-    // the actual image of the modal. 
-    const modalImage = document.createElement("img"); 
-    modalImage.classList.add("modal-image"); 
-    modalImage.src = imageSrc; // Assign the image source
-    modalImage.alt = title; 
-    modalDiv.appendChild(modalImage); 
-
-     // the alt text of the image shown under the image when modal is opened. 
-    const modalAlt = document.createElement("p"); 
-    modalAlt.id = "caption"; 
-    modalAlt.innerText = title; 
-    modalDiv.appendChild(modalAlt); 
-    }
 
 
 

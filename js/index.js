@@ -1,5 +1,5 @@
 import { fetchData } from "./fetch.js"
-import { postHolderDiv, renderCarousel } from "./Functions/renderindex.js"
+import { renderCarousel } from "./Functions/renderindex.js"
 import { initSlider } from "./Functions/carousel.js"; 
 import { displayBlogsPage } from "./Functions/renderblogs.js";
 import { renderBlogPage } from "./Functions/renderblogpage.js";
@@ -49,14 +49,9 @@ async function displayCorrectFunction() {
 displayCorrectFunction();
   
 
-
-
-
-
   // Hamburger menu 
  const hamburger = document.querySelector(".hamburger"); 
  const navMenu = document.querySelector(".nav-menu"); 
-
 
  hamburger.addEventListener("click", () => { 
   hamburger.classList.toggle("active");

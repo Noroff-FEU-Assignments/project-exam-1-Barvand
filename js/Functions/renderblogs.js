@@ -1,4 +1,5 @@
 import { fetchData } from "../fetch.js";
+import { getFirstPosts, getLastPosts } from "../utils.js";
 
 const url = `https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20`;
 
@@ -19,16 +20,13 @@ export async function displayBlogsPage() {
     const post = await fetchData(url);
     blogContainer.innerHTML = "";
     
-
     // display the first array. 
-    const firstPosts = getFirstPosts();
+    const firstPosts = getFirstPosts(currentPosts);
     displayPosts(firstPosts);
 
+    // function that loads the rest of the array once the load more btn has been clicked. 
     loadMore();
-
-    
 }
-
 
 // All data required for the functions to access. With this function you can render the HTML. 
 function displayPosts(posts) {
@@ -39,27 +37,17 @@ function displayPosts(posts) {
         const title = post.acf.title;
         const date = post.acf.post_date;
         const id = post.id;
-        const alt = post.acf.alt
+        const alt = post.acf.alt;
+        const summary = post.acf.summary; 
 
-        createBlogsPage(image, title, category, date, id, alt);
+        createBlogsPage(image, title, category, date, id, alt, summary);
     }
-}
-
-// Function to get the first set of posts, you can update the amount of posts want to be display with the slice function. 
-function getFirstPosts() {
-    return currentPosts.slice(0, 9);
-}
-
-// Function to get the second set of posts, you can update the amount of posts want to be display with the slice function. 
-function getLastPosts() {
-    return currentPosts.slice(9);
 }
 
 
 // function to render the html for the blog page with the parameters included. 
-export async function createBlogsPage(image, title, category, date, id, alt) { 
+export async function createBlogsPage(image, title, category, date, id, alt, summary) { 
     
-
     const divElement = document.createElement("div"); 
     divElement.classList.add("blog-card")
     blogContainer.appendChild(divElement)
@@ -69,13 +57,22 @@ export async function createBlogsPage(image, title, category, date, id, alt) {
     divElement.appendChild(anchorTag)
 
     const imageElement = document.createElement("img")
-    imageElement.src = `${image}`; 
-    imageElement.alt = `${alt}`; 
+    imageElement.src = image; 
+    imageElement.alt = alt; 
     anchorTag.appendChild(imageElement)
+
+    const textContainer = document.createElement("div"); 
+    textContainer.classList.add("post-text" , "text-blogs"); 
+    divElement.appendChild(textContainer)
     
     const titleElement = document.createElement("h2"); 
         titleElement.classList.add("margin"); 
         titleElement.innerText = title; 
+
+        const summaryText = document.createElement("p"); 
+        summaryText.classList.add("margin", "summary"); 
+        summaryText.textContent = summary; 
+    
 
     const buttonsDivElement = document.createElement("div"); 
         buttonsDivElement.classList.add("carousel-btns"); 
@@ -99,12 +96,14 @@ export async function createBlogsPage(image, title, category, date, id, alt) {
         dateSpan.classList.add("date-color")
         publishedElement.appendChild(dateSpan)
     
-        divElement.appendChild(publishedElement)
-        divElement.appendChild(titleElement); 
-        divElement.appendChild(buttonsDivElement); 
+        textContainer.appendChild(publishedElement)
+        textContainer.appendChild(titleElement); 
+        textContainer.appendChild(summaryText); 
+        textContainer.appendChild(buttonsDivElement); 
         buttonsDivElement.appendChild(readMoreButton)
         buttonsDivElement.appendChild(categoryButton)
         
+        return divElement
         }
 
 
@@ -114,6 +113,8 @@ export async function createBlogsPage(image, title, category, date, id, alt) {
             loadMoreButton.innerText = "Load More";
             buttonContainer.appendChild(loadMoreButton);
         
+            
+
             setTimeout(() => {
                 // Your existing setTimeout code
             }, 1000); // Adjust the delay time in milliseconds (e.g., 1000 ms = 1 second)
@@ -121,7 +122,7 @@ export async function createBlogsPage(image, title, category, date, id, alt) {
             // Adding an event listener to the "Load More" button
             // with this event listener we call the 2nd array with the click event.
             loadMoreButton.addEventListener("click", async () => {
-                const lastPosts = getLastPosts();
+                const lastPosts = getLastPosts(currentPosts);
                 displayPosts(lastPosts);
         
                 // Check if the array.length has been reached, if reached. Remove button.
@@ -132,6 +133,7 @@ export async function createBlogsPage(image, title, category, date, id, alt) {
         }
         
       
-    
-        
 
+       
+
+       
