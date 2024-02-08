@@ -38,7 +38,7 @@
     text-transform: uppercase;
     background-color: black;
     padding: 10px 20px;
-    border: white 2px dotted;
+    border: white 2px solid;
 }
 
 .hero-btn:hover { 
