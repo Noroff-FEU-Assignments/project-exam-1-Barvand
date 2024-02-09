@@ -11,7 +11,7 @@ const url =
 const errorContainer = document.querySelector(".flex-wrapper");
 const errorContainerBlogPage = document.querySelector(".flex-wrapper-blogpage");
 
-async function displayCorrectFunction() {
+async function displayCorrectPage() {
   try {
     const post = await fetchData(url);
     const webUrl = window.location.href;
@@ -33,12 +33,10 @@ async function displayCorrectFunction() {
       renderBlogPage();
     } else if (webUrl.includes("contact")) {
     } else if (webUrl.includes("warning")) {
-    } else {
-    }
+    } 
 
-    // After fetching data and rendering, initialize the slider
   } catch (error) {
-    console.error("Error in displayCorrectFunction:", error);
+    console.error("Error in displayCorrectPage:", error);
 
     if (errorContainer) {
       errorContainer.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
@@ -50,5 +48,5 @@ async function displayCorrectFunction() {
   }
 }
 
-displayCorrectFunction();
+displayCorrectPage();
 setupHamburgerMenu();
