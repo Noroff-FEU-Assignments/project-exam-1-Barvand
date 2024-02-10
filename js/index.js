@@ -52,7 +52,7 @@ setupHamburgerMenu();
 
 
 const carousel = document.querySelector(".carousel");
-const arrowBtns = document.querySelectorAll(".wrapper i");
+const arrowBtns = document.querySelectorAll(".carousel-container i");
 const firstCardWidth = carousel.querySelector(".card").offsetWidth;
 
 arrowBtns.forEach((btn) => {
