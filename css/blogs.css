@@ -55,13 +55,17 @@
     cursor: pointer;
 }
 
-.post-text { 
+.post-text {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     height: 200px;
-
-
+    justify-content: space-between;
+    align-self: end;
+    background-color: rgba(0, 0, 0, 0.815);
+    padding: 10px;
+    border: 1px white solid; 
+    width: 100%;
+    color: white;
 }
 
 @media (max-width:450px ) { 

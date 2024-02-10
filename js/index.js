@@ -1,6 +1,5 @@
 import { fetchData } from "./fetch.js";
 import { renderCarousel } from "./Functions/renderindex.js";
-import { initSlider } from "./Functions/carousel.js";
 import { displayBlogsPage } from "./Functions/renderblogs.js";
 import { renderBlogPage } from "./Functions/renderblogpage.js";
 import { setupHamburgerMenu } from "./Functions/hamburgermenu.js";
@@ -26,7 +25,6 @@ async function displayCorrectPage() {
       !webUrl.includes("warning")
     ) {
       renderCarousel();
-      initSlider();
     } else if (webUrl.includes("blogs")) {
       await displayBlogsPage();
     } else if (webUrl.includes("blogpage")) {
@@ -50,3 +48,16 @@ async function displayCorrectPage() {
 
 displayCorrectPage();
 setupHamburgerMenu();
+
+
+
+const carousel = document.querySelector(".carousel");
+const arrowBtns = document.querySelectorAll(".wrapper i");
+const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+
+arrowBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const scrollAmount = carousel.clientWidth; // Adjust this value as needed
+    carousel.scrollLeft += btn.id === "left" ? -scrollAmount : scrollAmount;
+  });
+});

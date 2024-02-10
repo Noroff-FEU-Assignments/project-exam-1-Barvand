@@ -84,7 +84,7 @@ export async function createBlogsPage(
     anchorTag.appendChild(imageElement);
 
     const textContainer = document.createElement("div");
-    textContainer.classList.add("post-text", "text-blogs");
+    textContainer.classList.add("post-text");
     divElement.appendChild(textContainer);
 
     const titleElement = document.createElement("h2");

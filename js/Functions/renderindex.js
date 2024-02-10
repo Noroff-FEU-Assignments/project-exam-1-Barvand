@@ -4,23 +4,41 @@ const url =
   "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard";
 
 // This renders the whole index page. //
-const imageContainer = document.querySelector(".image-list");
 
-export async function carouselContent(image, title, category, id) {
+const carouselCard = document.querySelector(".card");
+
+export async function renderCarousel() {
   try {
+  const posts = await fetchData(url); 
+  
+  const carouselCards = document.querySelectorAll(".card");
+
+  carouselCards.forEach((carouselCard) => {
+    carouselCard.innerHTML = ""; // Clear the HTML content of each .card element
+
+    const index = Array.from(carouselCards).indexOf(carouselCard); // Get the index of the current card
+    const postIndex = index % posts.length; // Calculate the index for the post
+
+    const image = posts[postIndex].acf.post_image; // Get the image corresponding to the post
+    const title = posts[postIndex].acf.title;
+    const id = posts[postIndex].id;
+    const category = posts[postIndex].acf.category;
+    const alt = posts[postIndex].acf.alt;
+    
+
     const anchor = document.createElement("a");
     anchor.href = `blogpage.html?id=${id}`;
     anchor.classList.add("post-link");
-    imageContainer.appendChild(anchor);
+    carouselCard.appendChild(anchor);
 
-    const divElement = document.createElement("div");
-    divElement.classList.add("post-holder");
-    divElement.style.background = "url(" + image + ")";
-    divElement.style.backgroundSize = "cover";
-    anchor.appendChild(divElement);
+    const imageElement = document.createElement("img");
+    imageElement.classList.add("carousel-image");
+    imageElement.src = image;
+    imageElement.alt = alt; 
+    anchor.appendChild(imageElement);
 
-    const textElement = document.createElement("div");
-    textElement.classList.add("post-text");
+   const textElement = document.createElement("div");
+    textElement.classList.add("carousel-text");
 
     const titleElement = document.createElement("h3");
     titleElement.classList.add("margin");
@@ -43,32 +61,12 @@ export async function carouselContent(image, title, category, id) {
     buttonsDivElement.appendChild(categoryButton);
     textElement.appendChild(titleElement);
     textElement.appendChild(buttonsDivElement);
-    divElement.appendChild(textElement);
-
-    return divElement;
-  } catch (error) {
-    console.error("Error in carouselContent:", error);
-  }
-}
-
-const carousel = document.querySelector(".carousel-latest-posts");
-
-export async function renderCarousel() {
-  try {
-    const post = await fetchData(url);
-
-    imageContainer.innerHTML = "";
-    for (let i = 0; i < 9; i++) {
-      const posts = post[i];
-
-      const image = posts.acf.post_image;
-      const category = posts.acf.category;
-      const title = posts.title.rendered;
-      const id = posts.id;
-
-      carouselContent(image, title, category, id);
-    }
-  } catch (error) {
+    carouselCard.appendChild(textElement);
+    
+    return carouselCard;
+  });
+}  catch (error) {
     console.error("Error in renderCarousel:", error);
   }
-}
+}; 
+
