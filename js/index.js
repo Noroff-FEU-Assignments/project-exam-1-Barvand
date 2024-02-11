@@ -31,8 +31,7 @@ async function displayCorrectPage() {
       renderBlogPage();
     } else if (webUrl.includes("contact")) {
     } else if (webUrl.includes("warning")) {
-    } 
-
+    }
   } catch (error) {
     console.error("Error in displayCorrectPage:", error);
 
@@ -49,15 +48,14 @@ async function displayCorrectPage() {
 displayCorrectPage();
 setupHamburgerMenu();
 
-
-
 const carousel = document.querySelector(".carousel");
 const arrowBtns = document.querySelectorAll(".carousel-container i");
-const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+const firstCardWidth = carousel.querySelector(".carousel-card").offsetWidth;
 
 arrowBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const scrollAmount = carousel.clientWidth; // Adjust this value as needed
+    const scrollAmount = carousel.offsetWidth; // Adjust this value as needed
     carousel.scrollLeft += btn.id === "left" ? -scrollAmount : scrollAmount;
   });
 });
+

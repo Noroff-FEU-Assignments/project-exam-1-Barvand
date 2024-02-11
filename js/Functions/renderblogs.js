@@ -49,10 +49,9 @@ function displayPosts(posts) {
       const title = post.acf.title;
       const date = post.acf.post_date;
       const id = post.id;
-      const alt = post.acf.alt;
       const summary = post.acf.summary;
 
-      createBlogsPage(image, title, category, date, id, alt, summary);
+      createBlogsPage(image, title, category, date, id, summary, blogContainer);
     }
   } catch (error) {
     console.error("Error in displayPosts:", error);
@@ -66,43 +65,37 @@ export async function createBlogsPage(
   category,
   date,
   id,
-  alt,
-  summary
+  summary,
+  parentElement
 ) {
   try {
-    const divElement = document.createElement("div");
+    const divElement = document.createElement("a");
     divElement.classList.add("blog-card");
-    blogContainer.appendChild(divElement);
-
-    const anchorTag = document.createElement("a");
-    anchorTag.href = `blogpage.html?id=${id}`;
-    divElement.appendChild(anchorTag);
-
-    const imageElement = document.createElement("img");
-    imageElement.src = image;
-    imageElement.alt = alt;
-    anchorTag.appendChild(imageElement);
+    divElement.style.backgroundImage = `url(${image})`;
+    divElement.href = `blogpage.html?id=${id}`;
+    
 
     const textContainer = document.createElement("div");
     textContainer.classList.add("post-text");
-    divElement.appendChild(textContainer);
+    
 
     const titleElement = document.createElement("h2");
     titleElement.classList.add("margin");
     titleElement.innerText = title;
 
     const summaryText = document.createElement("p");
-    summaryText.classList.add("margin", "summary");
+    summaryText.classList.add("summary");
     summaryText.textContent = summary;
-
-    const buttonsDivElement = document.createElement("div");
-    buttonsDivElement.classList.add("carousel-btns");
 
     const readMoreButton = document.createElement("a");
     readMoreButton.classList.add("readmore-btn");
     readMoreButton.href = `blogpage.html?id=${id}`;
-    readMoreButton.innerText = `Read more...`;
+    readMoreButton.innerText = `read more...`;
 
+
+    const buttonsDivElement = document.createElement("div");
+    buttonsDivElement.classList.add("carousel-btns");
+    
     const categoryButton = document.createElement("a");
     categoryButton.classList.add("category-emblem");
     categoryButton.href = `blogpage.html?id=${id}`;
@@ -115,17 +108,77 @@ export async function createBlogsPage(
     const dateSpan = document.createElement("span");
     dateSpan.innerText = ` // ${date}`;
     dateSpan.classList.add("date-color");
-    publishedElement.appendChild(dateSpan);
 
+
+    parentElement.appendChild(divElement);
+    divElement.appendChild(buttonsDivElement);
+    buttonsDivElement.appendChild(categoryButton);
+    divElement.appendChild(textContainer);
+    publishedElement.appendChild(dateSpan);
     textContainer.appendChild(publishedElement);
     textContainer.appendChild(titleElement);
     textContainer.appendChild(summaryText);
-    textContainer.appendChild(buttonsDivElement);
-    buttonsDivElement.appendChild(readMoreButton);
-    buttonsDivElement.appendChild(categoryButton);
+    summaryText.appendChild(readMoreButton);
+    
 
     return divElement;
   } catch (error) {
     console.error("Error in createBlogsPage:", error);
   }
 }
+
+
+
+
+async function searchBar() {
+  const allPosts = await fetchData(url);
+  const searchInput = document.getElementById("search");
+  const searchButton = document.getElementById("search-button");
+  const searchResultsContainer = document.querySelector(".blog-container");
+
+  function performSearch(query) {
+    // Clear previous search results
+    searchResultsContainer.innerHTML = "";
+
+    // Filter posts based on the query
+    const filteredPosts = allPosts.filter((post) => {
+      return (
+        post.acf.title.toLowerCase().includes(query.toLowerCase()) ||
+        post.acf.summary.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+
+    // Render search results
+   filteredPosts.forEach(post => {
+    createBlogsPage(
+        post.acf.post_image, // Access image property of the post object
+        post.acf.title, // Access title property of the post object
+        post.acf.category, // Access category property of the post object
+        post.acf.date, // Access date property of the post object
+        post.id, // Access id property of the post object
+        post.acf.summary, // Access summary property of the post object
+        searchResultsContainer // Pass searchResultsContainer as argument
+    );
+});
+  }
+
+  // Event listener for search button click
+  searchButton.addEventListener("click", function () {
+    const query = searchInput.value.trim();
+    if (query !== "") {
+      performSearch(query);
+    }
+  });
+
+  // Event listener for Enter key press in the input field
+  searchInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      const query = searchInput.value.trim();
+      if (query !== "") {
+        performSearch(query);
+      }
+    }
+  });
+}
+
+searchBar();
