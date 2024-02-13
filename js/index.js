@@ -3,6 +3,9 @@ import { renderCarousel } from "./Functions/renderindex.js";
 import { displayBlogsPage } from "./Functions/renderblogs.js";
 import { renderBlogPage } from "./Functions/renderblogpage.js";
 import { setupHamburgerMenu } from "./Functions/hamburgermenu.js";
+import { searchBar, createCategories} from "./utils.js"
+
+
 
 const url =
   "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
@@ -27,6 +30,8 @@ async function displayCorrectPage() {
       renderCarousel();
     } else if (webUrl.includes("blogs")) {
       await displayBlogsPage();
+      searchBar();
+      createCategories();
     } else if (webUrl.includes("blogpage")) {
       renderBlogPage();
     } else if (webUrl.includes("contact")) {
@@ -50,7 +55,6 @@ setupHamburgerMenu();
 
 const carousel = document.querySelector(".carousel");
 const arrowBtns = document.querySelectorAll(".carousel-container i");
-const firstCardWidth = carousel.querySelector(".carousel-card").offsetWidth;
 
 arrowBtns.forEach((btn) => {
   btn.addEventListener("click", () => {

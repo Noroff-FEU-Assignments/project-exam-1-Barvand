@@ -1,65 +1,85 @@
- 
-.blog-container { 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-    width: 100%;
-    flex-direction: row;
-    gap: 30px;
-
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  width: 100%;
+  flex-direction: row;
+  gap: 30px;
 }
 
 /* load more button */
 
-#load-more-btn { 
-    align-self: center;
-    padding: 10px 20px; 
-    background-color:black; 
-    border: white 2px solid ;
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
+#load-more-btn {
+  align-self: center;
+  padding: 10px 20px;
+  background-color: black;
+  border: white 2px solid;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-#load-more-btn:hover { 
-    background-color: white;
-    color: black; 
-    cursor: pointer;
+#load-more-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
 }
-
-
 
 /* Search Bar */
 .search-input-container {
-    width: 20%;
-    float: right;
-    display: flex;
-    align-items: center;
+  width: 20%;
+  float: right;
+  display: flex;
+  align-items: center;
 }
-input#search { 
-    margin: 0;
+input#search {
+  margin: 0;
 }
 
-#search-button { 
-    width: 50px;
-    height: 30px;
-    margin-left: 5px;
+#search-button {
+  width: 50px;
+  height: 30px;
+  margin-left: 5px;
 }
 
 label[for="search"] {
-    display: none;
+  display: none;
+}
+
+/* Categories selector */
+.categories-container {
+  display: grid; 
+ grid-template-columns: repeat(auto-fit, minmax(60px, 100px));
+ margin: 10px 0 0 0;
 }
 
 
-@media (max-width:450px ) { 
-    .blog-container { 
+
+@media (max-width: 1050px) {
+  .search-input-container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 450px) {
+  .blog-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
+  }
 
-.blog-card { 
+  .blog-card {
     background-position: right;
+  }
+
+  .post-text {
+    height: auto;
+  }
+
+  .search-input-container {
+    width: 60%;
+  }
 }
 
-.post-text {
-   height: auto;
-}
+@media (max-width: 450px) {
+  .search-input-container {
+    width: 100%;
+  }
 }

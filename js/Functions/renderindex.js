@@ -20,15 +20,9 @@ export async function renderCarousel() {
     const index = Array.from(carouselCards).indexOf(carouselCard); // Get the index of the current card
     const postIndex = index % posts.length; // Calculate the index for the post
 
-    const image = posts[postIndex].acf.post_image;
-    const title = posts[postIndex].acf.title;
-    const id = posts[postIndex].id;
-    const category = posts[postIndex].acf.category;
-    const summary = posts[postIndex].acf.summary;
-    const date = posts[postIndex].acf.post_date;
-
+    const post = posts[postIndex]
     
- createBlogsPage(image, title, category, date, id, summary, carouselCard);
+ createBlogsPage(post, carouselCard);
   
     return carouselCard;
   });

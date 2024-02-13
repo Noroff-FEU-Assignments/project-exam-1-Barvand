@@ -44,14 +44,9 @@ function displayPosts(posts) {
   try {
     for (let i = 0; i < posts.length; i++) {
       const post = posts[i];
-      const image = post.acf.post_image;
-      const category = post.acf.category;
-      const title = post.acf.title;
-      const date = post.acf.post_date;
-      const id = post.id;
-      const summary = post.acf.summary;
 
-      createBlogsPage(image, title, category, date, id, summary, blogContainer);
+      createBlogsPage(post, blogContainer);
+      
     }
   } catch (error) {
     console.error("Error in displayPosts:", error);
@@ -60,55 +55,46 @@ function displayPosts(posts) {
 
 // function to render the html for the blog page with the parameters included.
 export async function createBlogsPage(
-  image,
-  title,
-  category,
-  date,
-  id,
-  summary,
+  post,
   parentElement
 ) {
   try {
     const divElement = document.createElement("a");
     divElement.classList.add("blog-card");
-    divElement.style.backgroundImage = `url(${image})`;
-    divElement.href = `blogpage.html?id=${id}`;
-    
+    divElement.style.backgroundImage = `url(${post.acf.post_image})`;
+    divElement.href = `blogpage.html?id=${post.id}`;
 
     const textContainer = document.createElement("div");
     textContainer.classList.add("post-text");
-    
 
     const titleElement = document.createElement("h2");
     titleElement.classList.add("margin");
-    titleElement.innerText = title;
+    titleElement.innerText = post.acf.title;
 
     const summaryText = document.createElement("p");
     summaryText.classList.add("summary");
-    summaryText.textContent = summary;
+    summaryText.textContent = post.acf.summary;
 
     const readMoreButton = document.createElement("a");
     readMoreButton.classList.add("readmore-btn");
-    readMoreButton.href = `blogpage.html?id=${id}`;
+    readMoreButton.href = `blogpage.html?id=${post.id}`;
     readMoreButton.innerText = `read more...`;
-
 
     const buttonsDivElement = document.createElement("div");
     buttonsDivElement.classList.add("carousel-btns");
-    
+
     const categoryButton = document.createElement("a");
     categoryButton.classList.add("category-emblem");
-    categoryButton.href = `blogpage.html?id=${id}`;
-    categoryButton.innerText = `${category}`;
+    categoryButton.href = `blogpage.html?id=${post.id}`;
+    categoryButton.innerText = `${post.acf.category}`;
 
     const publishedElement = document.createElement("p");
     publishedElement.classList.add("published");
     publishedElement.innerText = `Published on `;
 
     const dateSpan = document.createElement("span");
-    dateSpan.innerText = ` // ${date}`;
+    dateSpan.innerText = ` // ${post.acf.post_date}`;
     dateSpan.classList.add("date-color");
-
 
     parentElement.appendChild(divElement);
     divElement.appendChild(buttonsDivElement);
@@ -119,7 +105,6 @@ export async function createBlogsPage(
     textContainer.appendChild(titleElement);
     textContainer.appendChild(summaryText);
     summaryText.appendChild(readMoreButton);
-    
 
     return divElement;
   } catch (error) {
@@ -127,58 +112,3 @@ export async function createBlogsPage(
   }
 }
 
-
-
-
-async function searchBar() {
-  const allPosts = await fetchData(url);
-  const searchInput = document.getElementById("search");
-  const searchButton = document.getElementById("search-button");
-  const searchResultsContainer = document.querySelector(".blog-container");
-
-  function performSearch(query) {
-    // Clear previous search results
-    searchResultsContainer.innerHTML = "";
-
-    // Filter posts based on the query
-    const filteredPosts = allPosts.filter((post) => {
-      return (
-        post.acf.title.toLowerCase().includes(query.toLowerCase()) ||
-        post.acf.summary.toLowerCase().includes(query.toLowerCase())
-      );
-    });
-
-    // Render search results
-   filteredPosts.forEach(post => {
-    createBlogsPage(
-        post.acf.post_image, // Access image property of the post object
-        post.acf.title, // Access title property of the post object
-        post.acf.category, // Access category property of the post object
-        post.acf.date, // Access date property of the post object
-        post.id, // Access id property of the post object
-        post.acf.summary, // Access summary property of the post object
-        searchResultsContainer // Pass searchResultsContainer as argument
-    );
-});
-  }
-
-  // Event listener for search button click
-  searchButton.addEventListener("click", function () {
-    const query = searchInput.value.trim();
-    if (query !== "") {
-      performSearch(query);
-    }
-  });
-
-  // Event listener for Enter key press in the input field
-  searchInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query !== "") {
-        performSearch(query);
-      }
-    }
-  });
-}
-
-searchBar();

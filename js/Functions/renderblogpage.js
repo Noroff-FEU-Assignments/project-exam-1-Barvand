@@ -3,7 +3,7 @@ import { returnButton } from "../utils.js";
 import { renderModal } from "../modal.js";
 
 const url =
-  "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard";
+  "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
 
 const blogPageFlexContainer = document.querySelector(".flex-wrapper-blogpage");
 const blogPage = document.querySelector(".blogpage");
@@ -26,21 +26,32 @@ export async function renderBlogPage() {
       const date = posts.acf.post_date;
       const author = posts.acf.author;
       const image = posts.acf.post_image;
+      const category = posts.acf.category;
 
-      identicalTitle(title);
+      identicalTitle(title, category);
       createContainerPublisher(date, author);
       displayBlogContent(posts);
       returnButton("Return to blogs", "blogs.html", blogPageFlexContainer);
+      
     }
   }
 }
 
 // this renders the title
-async function identicalTitle(title) {
+async function identicalTitle(title, category) {
+  const titleContainer = document.createElement("div"); 
+  titleContainer.classList.add("title-container"); 
+   blogPage.appendChild(titleContainer);
+
   const blogTitle = document.createElement("h1");
   blogTitle.classList.add("blog-title");
   blogTitle.innerText = title;
-  blogPage.appendChild(blogTitle);
+  titleContainer.appendChild(blogTitle);
+
+  const categoryButton = document.createElement("p");
+  categoryButton.classList.add("category-emblem", "category-blog-page");
+  categoryButton.innerText = `${category}`;
+  titleContainer.appendChild(categoryButton);
 
   return blogTitle;
 }
@@ -71,6 +82,8 @@ async function createContainerPublisher(date, author) {
   whoSpan.classList.add("date-color");
   publishedWhoElement.appendChild(whoSpan);
 
+   
+  
   return publishContainer;
 }
 
