@@ -169,7 +169,7 @@
     height: 100%;
   }
 
-  .carousel-container i {
+  .carousel-container button {
     display: none;
   }
 }
