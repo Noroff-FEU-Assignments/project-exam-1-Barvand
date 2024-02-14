@@ -10,24 +10,23 @@ const carouselCard = document.querySelector(".card");
 
 export async function renderCarousel() {
   try {
-  const posts = await fetchData(url); 
-  
-  const carouselCards = document.querySelectorAll(".carousel-card");
+    const posts = await fetchData(url);
 
-  carouselCards.forEach((carouselCard) => {
-    carouselCard.innerHTML = ""; 
+    const carouselCards = document.querySelectorAll(".carousel-card");
 
-    const index = Array.from(carouselCards).indexOf(carouselCard); // Get the index of the current card
-    const postIndex = index % posts.length; // Calculate the index for the post
+    carouselCards.forEach((carouselCard) => {
+      carouselCard.innerHTML = "";
 
-    const post = posts[postIndex]
-    
- createBlogsPage(post, carouselCard);
-  
-    return carouselCard;
-  });
-}  catch (error) {
+      const index = Array.from(carouselCards).indexOf(carouselCard); // Get the index of the current card
+      const postIndex = index % posts.length; // Calculate the index for the post
+
+      const post = posts[postIndex];
+
+      createBlogsPage(post, carouselCard);
+
+      return carouselCard;
+    });
+  } catch (error) {
     console.error("Error in renderCarousel:", error);
   }
-}; 
-
+}

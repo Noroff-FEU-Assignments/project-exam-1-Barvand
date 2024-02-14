@@ -46,7 +46,6 @@ function displayPosts(posts) {
       const post = posts[i];
 
       createBlogsPage(post, blogContainer);
-      
     }
   } catch (error) {
     console.error("Error in displayPosts:", error);
@@ -54,10 +53,7 @@ function displayPosts(posts) {
 }
 
 // function to render the html for the blog page with the parameters included.
-export async function createBlogsPage(
-  post,
-  parentElement
-) {
+export async function createBlogsPage(post, parentElement) {
   try {
     const divElement = document.createElement("a");
     divElement.classList.add("blog-card");
@@ -111,4 +107,3 @@ export async function createBlogsPage(
     console.error("Error in createBlogsPage:", error);
   }
 }
-

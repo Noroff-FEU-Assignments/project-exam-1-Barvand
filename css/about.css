@@ -1,72 +1,68 @@
-.about-grid-container { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px   ;
+.about-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-.about-text { 
-    margin-bottom: 20px;
+.about-text {
+  margin-bottom: 20px;
 }
 
-.card-team-container { 
-    width: 100%;
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-content: center;
-    gap: 20px;
+.card-team-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 20px;
 }
 
-.flex-card-about { 
-    width: 100%;
+.flex-card-about {
+  width: 100%;
 }
 
-.card-team { 
-    display: flex;
-    flex-direction: column;
+.card-team {
+  display: flex;
+  flex-direction: column;
 }
-
 
 .card-image-container {
-    text-align: center;
-    background-color:#F2C75C;
-    padding: 5px;
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-    
-    
+  text-align: center;
+  background-color: #f2c75c;
+  padding: 5px;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
 }
 
-.team-image { 
-    width: 150px;
-    border-radius: 50%;
-    border: solid 3px black; 
-    align-self: center;
+.team-image {
+  width: 150px;
+  border-radius: 50%;
+  border: solid 3px black;
+  align-self: center;
 }
 
-.card-team-text { 
-    text-align: center;
-    padding: 10px;
-    border: solid white 1px;
-
+.card-team-text {
+  text-align: center;
+  padding: 10px;
+  border: solid white 1px;
 }
 
-.card-team-text-name { 
-    font-size: 20px;
-    font-weight: 500;
+.card-team-text-name {
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.card-team-text-occupation { 
-    color: #F2C75C;
-    font-weight: 500;
-    text-transform: uppercase;
+.card-team-text-occupation {
+  color: #f2c75c;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-.card-team-text-socials { 
-    color: #F2C75C;
+.card-team-text-socials {
+  color: #f2c75c;
 }
 
-.card-team-socials i { 
-    margin: 10px;
-    font-size: 24px;
-    color: white;
+.card-team-socials i {
+  margin: 10px;
+  font-size: 24px;
+  color: white;
 }

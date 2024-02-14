@@ -28,84 +28,81 @@ export function getLastPosts(array) {
   return array.slice(9);
 }
 
-
-
-// This is the function that creates the search Bar and function. 
+// This is the function that creates the search Bar and function.
 export async function searchBar() {
-  const allPosts = await fetchData(url);
-  
-  const searchInput = document.getElementById("search");
-  const searchResultsContainer = document.querySelector(".blog-container");
-  const loadButton = document.querySelector(".button-container");
+  try {
+    const allPosts = await fetchData(url);
 
-  function performSearch(query) {
-    searchResultsContainer.innerHTML = "";
+    const searchInput = document.getElementById("search");
+    const searchResultsContainer = document.querySelector(".blog-container");
+    const loadButton = document.querySelector(".button-container");
 
-    // Using firstPosts instead of allPosts in order to not load the whole array once the search bar has been emptied after searching.
-    const firstPosts = getFirstPosts(allPosts);
+    function performSearch(query) {
+      searchResultsContainer.innerHTML = "";
 
-    // If query is an empty string
-    if (query === "") {
-      firstPosts.forEach((post) => {
-        createBlogsPage(post, searchResultsContainer
+      // Using firstPosts instead of allPosts in order to not load the whole array once the search bar has been emptied after searching.
+      const firstPosts = getFirstPosts(allPosts);
+
+      // If query is an empty string
+      if (query === "") {
+        firstPosts.forEach((post) => {
+          createBlogsPage(post, searchResultsContainer);
+        });
+        loadButton.style.display = "block"; // Show load more button
+        return;
+      }
+
+      // Filter posts based on the query
+      const filteredPosts = allPosts.filter((post) => {
+        return (
+          query === "" ||
+          post.acf.title.toLowerCase().includes(query.toLowerCase()) ||
+          post.acf.summary.toLowerCase().includes(query.toLowerCase())
         );
       });
-      loadButton.style.display = "block"; // Show load more button
-      return;
+
+      const displayedPosts = filteredPosts;
+
+      // Render search results
+      displayedPosts.forEach((post) => {
+        createBlogsPage(post, searchResultsContainer);
+      });
+      loadButton.style.display = "none"; // Hide load more button when searching
     }
 
-    // Filter posts based on the query
-     const filteredPosts = allPosts.filter((post) => {
-      return (
-        (query === "" || 
-         post.acf.title.toLowerCase().includes(query.toLowerCase()) ||
-         post.acf.summary.toLowerCase().includes(query.toLowerCase()))
-      );
+    // Event listener for input field value changes
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.trim();
+      performSearch(query);
     });
 
-    const displayedPosts = filteredPosts;
-
-    // Render search results
-    displayedPosts.forEach((post) => {
-      createBlogsPage(post, searchResultsContainer
-      );
-    });
-    loadButton.style.display = "none"; // Hide load more button when searching
+    // Initial rendering of all posts
+    performSearch(""); // Perform an initial search with an empty query
+  } catch (error) {
+    console.error("Error in categoryInvestment:", error);
   }
-
-  // Event listener for input field value changes
-  searchInput.addEventListener("input", function () {
-    const query = searchInput.value.trim();
-    performSearch(query);
-  });
-
-  // Initial rendering of all posts
-  performSearch(""); // Perform an initial search with an empty query
 }
 
+// This function displays all the categories and fetches the array.
+const informationButton = document.getElementById("information");
+const newsButton = document.getElementById("news");
+const investmentButton = document.getElementById("investment");
+const technicalButton = document.getElementById("technical");
+const allPostsButton = document.getElementById("all-posts");
+const loadButton = document.querySelector(".button-container");
 
+// Needed to fetch to prevent fetching within all the functions and so I could use a copy in order to speed up the loading time.
+const allPosts = await fetchData(url);
 
-// This function displays all the categories and fetches the array. 
- const informationButton = document.getElementById("information");
- const newsButton = document.getElementById("news");
- const investmentButton = document.getElementById("investment");
- const technicalButton = document.getElementById("technical");
- const allPostsButton = document.getElementById("all-posts");
- const loadButton = document.querySelector(".button-container");
+// pushes all posts with the category INFORMATION and renders it
+async function categoryInformation() {
+  try {
+    const searchResultsContainer = document.querySelector(".blog-container");
 
+    const posts = [...allPosts];
+    let informationPosts = [];
 
- // Needed to fetch to prevent fetching within all the functions and so I could use a copy in order to speed up the loading time. 
-const allPosts = await fetchData(url); 
-
-
-// pushes all posts with the category INFORMATION and renders it 
-  async function categoryInformation() {
-      const searchResultsContainer = document.querySelector(".blog-container");
-
-      const posts = [...allPosts]
-      let informationPosts = [];
-
-      searchResultsContainer.innerHTML = ""; 
+    searchResultsContainer.innerHTML = "";
 
     for (let i = 0; i < posts.length; i++) {
       const category = posts[i].acf.category;
@@ -117,117 +114,136 @@ const allPosts = await fetchData(url);
       }
     }
     return informationPosts;
+  } catch (error) {
+    console.error("Error in categoryInvestment:", error);
   }
+}
 
+// pushes all posts with the category NEWS and renders it
+async function categoryNews() {
+  try {
+    const searchResultsContainer = document.querySelector(".blog-container");
 
-  // pushes all posts with the category NEWS and renders it 
-    async function categoryNews() {
-      const searchResultsContainer = document.querySelector(".blog-container");
+    const posts = [...allPosts];
+    let newsPosts = [];
 
-      const posts = [...allPosts];
-      let newsPosts = [];
+    searchResultsContainer.innerHTML = "";
 
-      searchResultsContainer.innerHTML = "";
+    for (let i = 0; i < posts.length; i++) {
+      const category = posts[i].acf.category;
 
-      for (let i = 0; i < posts.length; i++) {
-        const category = posts[i].acf.category;
-
-        if (category === "News") {
-          newsPosts.push(posts[i]);
-          createBlogsPage(posts[i], searchResultsContainer);
-          loadButton.style.display = "none"; // Hide load more button when searching
-        }
+      if (category === "News") {
+        newsPosts.push(posts[i]);
+        createBlogsPage(posts[i], searchResultsContainer);
+        loadButton.style.display = "none"; // Hide load more button when searching
       }
-      return newsPosts;
     }
-      
-  // pushes all posts with the category INVESTMENT and renders it. 
-    async function categoryInvestment() {
-      const searchResultsContainer = document.querySelector(".blog-container");
+    return newsPosts;
+  } catch (error) {
+    console.error("Error in categoryInvestment:", error);
+  }
+}
 
-      const posts = [...allPosts];
-      let investmentPosts = [];
+// pushes all posts with the category INVESTMENT and renders it.
+async function categoryInvestment() {
+  try {
+    const searchResultsContainer = document.querySelector(".blog-container");
 
-      searchResultsContainer.innerHTML = "";
+    const posts = [...allPosts];
+    let investmentPosts = [];
 
-      for (let i = 0; i < posts.length; i++) {
-        const category = posts[i].acf.category;
+    searchResultsContainer.innerHTML = "";
 
-        if (category === "Investment") {
-          investmentPosts.push(posts[i]);
-          createBlogsPage(posts[i], searchResultsContainer);
-          loadButton.style.display = "none"; // Hide load more button when searching
-        }
+    for (let i = 0; i < posts.length; i++) {
+      const category = posts[i].acf.category;
+
+      if (category === "Investment") {
+        investmentPosts.push(posts[i]);
+        createBlogsPage(posts[i], searchResultsContainer);
+        loadButton.style.display = "none"; // Hide load more button when searching
       }
-      return investmentPosts;
     }
+    return investmentPosts;
+  } catch (error) {
+    console.error("Error in categoryInvestment:", error);
+  }
+}
 
-    // pushes all posts with the category TECHNICAL and renders it. 
-    async function categoryTechnical() {
-      const searchResultsContainer = document.querySelector(".blog-container");
+// pushes all posts with the category TECHNICAL and renders it.
+async function categoryTechnical() {
+  try {
+    const searchResultsContainer = document.querySelector(".blog-container");
 
-      const posts = [...allPosts];
-      let technicalPosts = [];
+    const posts = [...allPosts];
+    let technicalPosts = [];
 
-      searchResultsContainer.innerHTML = "";
+    searchResultsContainer.innerHTML = "";
 
-      for (let i = 0; i < posts.length; i++) {
-        const category = posts[i].acf.category;
+    for (let i = 0; i < posts.length; i++) {
+      const category = posts[i].acf.category;
 
-        if (category === "Technical") {
-          technicalPosts.push(posts[i]);
-          createBlogsPage(posts[i], searchResultsContainer);
-          loadButton.style.display = "none"; // Hide load more button when searching
-        }
+      if (category === "Technical") {
+        technicalPosts.push(posts[i]);
+        createBlogsPage(posts[i], searchResultsContainer);
+        loadButton.style.display = "none"; // Hide load more button when searching
       }
-      return technicalPosts;
     }
+    return technicalPosts;
+  } catch (error) {
+    console.error("Error in categoryTechnical:", error);
+  }
+}
 
-    // Here I use the function getFirstPosts in order to slice the array to have the original blogs page with the load more button. 
-   async function returnToAllPosts() {
-     const searchResultsContainer = document.querySelector(".blog-container");
+// Here I use the function getFirstPosts in order to slice the array to have the original blogs page with the load more button.
+async function returnToAllPosts() {
+  try {
+    const searchResultsContainer = document.querySelector(".blog-container");
 
-     const posts = [...allPosts];
-     const firstPosts = getFirstPosts(allPosts);
+    const posts = [...allPosts];
+    const firstPosts = getFirstPosts(allPosts);
 
-     let fullPosts = [];
+    let fullPosts = [];
 
-     searchResultsContainer.innerHTML = "";
+    searchResultsContainer.innerHTML = "";
 
-     for (let i = 0; i < firstPosts.length; i++) {
-       const category = posts[i].acf.category;
+    for (let i = 0; i < firstPosts.length; i++) {
+      const category = posts[i].acf.category;
 
-       if ((category === "Information", "News", "Investment", "Technical")) {
-         fullPosts.push(posts[i]);
-         createBlogsPage(posts[i], searchResultsContainer);
-         loadButton.style.display = "block"; // show btn
-       }
-     }
-     return fullPosts;
-   }
-    
- const allButtons = document.querySelectorAll(".category-emblem");
+      if ((category === "Information", "News", "Investment", "Technical")) {
+        fullPosts.push(posts[i]);
+        createBlogsPage(posts[i], searchResultsContainer);
+        loadButton.style.display = "block"; // show btn
+      }
+    }
+    return fullPosts;
+  } catch (error) {
+    console.error("Error in returnToAllPosts:", error);
+  }
+}
 
- allButtons.forEach((button) => {
-   button.addEventListener("click", function () {
-     button.classList.toggle("active");
-   });
- });
-    
+const allButtons = document.querySelectorAll(".category-emblem");
 
+allButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    button.classList.toggle("active");
+  });
+});
 
- // Bundled all functions to one functions and exported it to Index page. 
+// Bundled all functions to one functions and exported it to Index page.
 export function createCategories() {
-  
-  informationButton.addEventListener("click", categoryInformation);
-  newsButton.addEventListener("click", categoryNews);
-  investmentButton.addEventListener("click", categoryInvestment);
-  technicalButton.addEventListener("click", categoryTechnical);
-  allPostsButton.addEventListener("click", returnToAllPosts);
+  try {
+    informationButton.addEventListener("click", categoryInformation);
+    newsButton.addEventListener("click", categoryNews);
+    investmentButton.addEventListener("click", categoryInvestment);
+    technicalButton.addEventListener("click", categoryTechnical);
+    allPostsButton.addEventListener("click", returnToAllPosts);
 
-  categoryNews();
-  categoryTechnical();
-  categoryInvestment();
-  categoryInformation();
-  returnToAllPosts();
+    categoryNews();
+    categoryTechnical();
+    categoryInvestment();
+    categoryInformation();
+    returnToAllPosts();
+  } catch (error) {
+    console.error("Error in createCategories:", error);
+  }
 }
