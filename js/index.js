@@ -57,7 +57,7 @@ setupHamburgerMenu();
 
 // carousel buttons for functionality 
 const carousel = document.querySelector(".carousel");
-const arrowBtns = document.querySelectorAll(".carousel-container i");
+const arrowBtns = document.querySelectorAll(".carousel-container button");
 
 arrowBtns.forEach((btn) => {
   btn.addEventListener("click", () => {

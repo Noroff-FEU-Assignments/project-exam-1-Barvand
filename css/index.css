@@ -62,7 +62,7 @@
   cursor: grab;
 }
 
-.carousel-container i {
+.carousel-container button {
   padding: 20px;
   background: rgb(175, 174, 174);
   text-align: center;
@@ -73,9 +73,11 @@
   font-size: 1rem;
   transform: translateY(-50%);
   color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
 }
 
-.carousel-container i:hover {
+.carousel-container button:hover {
   background: rgb(59, 59, 59);
 }
 
