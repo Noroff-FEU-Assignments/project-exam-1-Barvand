@@ -34,6 +34,7 @@ export async function displayBlogsPage() {
       displayPosts,
       buttonContainer
     );
+    return post
   } catch (error) {
     console.error("Error in displayBlogsPage:", error);
   }
@@ -47,6 +48,7 @@ function displayPosts(posts) {
 
       createBlogsPage(post, blogContainer);
     }
+    return createBlogsPage;
   } catch (error) {
     console.error("Error in displayPosts:", error);
   }

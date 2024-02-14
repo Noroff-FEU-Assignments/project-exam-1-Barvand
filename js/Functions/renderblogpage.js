@@ -11,6 +11,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
+// renders the blog page. 
 export async function renderBlogPage() {
   try {
     const post = await fetchData(url);
@@ -26,7 +27,6 @@ export async function renderBlogPage() {
         const title = posts.acf.title;
         const date = posts.acf.post_date;
         const author = posts.acf.author;
-        const image = posts.acf.post_image;
         const category = posts.acf.category;
 
         renderTitle(title, category);

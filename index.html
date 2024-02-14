@@ -72,7 +72,7 @@
     </header>
     <div class="white-line"></div>
 
-    <div class="flex-wrapper">
+    <main class="flex-wrapper">
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <div class="tradingview-widget-copyright">
@@ -125,10 +125,16 @@
       <h2 class="title-post">Latest posts</h2>
 
       <div class="carousel-container">
-        <i id="left" class="fa-solid fa-angle-left"  aria-label="previous-button"></i>
+        <i
+          id="left"
+          class="fa-solid fa-angle-left"
+          aria-label="previous-button"
+        ></i>
         <ul class="carousel">
           <li class="carousel-card">
-            <div class="loader"></div>
+            <div class="loader-container">
+              <div class="loader"></div>
+            </div>
           </li>
           <li class="carousel-card"></li>
           <li class="carousel-card"></li>
@@ -139,7 +145,11 @@
           <li class="carousel-card"></li>
           <li class="carousel-card"></li>
         </ul>
-        <i id="right" class="fa-solid fa-angle-right" aria-label="next-button"></i>
+        <i
+          id="right"
+          class="fa-solid fa-angle-right"
+          aria-label="next-button"
+        ></i>
       </div>
 
       <div class="whitespace"></div>
@@ -186,7 +196,7 @@
         alt="chart-displaying-crash-lunc-cryptocurrency"
       />
       <div class="whitespace"></div>
-    </div>
+    </main>
     <footer class="footer">
       <div class="footer-container white-line"></div>
       <div class="flex-wrapper">
@@ -224,7 +234,7 @@
             <h4>Follow us</h4>
             <div class="social-links">
               <a href="https://www.facebook.com/">
-                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                <i class="fa-brands fa-facebook"></i>
                 <span class="sr-only">Facebook</span>
               </a>
               <a href="https://twitter.com/home?lang=en"
@@ -235,17 +245,11 @@
                 <span class="sr-only">Twitter/X</span>
               </a>
               <a href="https://www.instagram.com/"
-                ><i
-                  class="fa-brands fa-instagram social"
-                  aria-label="Instagram"
-                ></i>
+                ><i class="fa-brands fa-instagram social"></i>
                 <span class="sr-only">Instagram</span>
               </a>
               <a href="https://www.linkedin.com/"
-                ><i
-                  class="fa-brands fa-linkedin social"
-                  aria-label="Linkedin"
-                ></i>
+                ><i class="fa-brands fa-linkedin social"></i>
                 <span class="sr-only">Linkedin</span>
               </a>
             </div>

@@ -34,6 +34,8 @@ export function renderModal(imageSrc, title, parentElement) {
     modalAlt.id = "caption";
     modalAlt.innerText = title;
     modalDiv.appendChild(modalAlt);
+
+    return modalDiv
   } catch (error) {
     console.error("Error in renderModal:", error);
   }

@@ -26,6 +26,7 @@ export function loadMore(
       if (array.length === array.length) {
         loadMoreButton.remove();
       }
+      return loadMoreButton;
     });
   } catch (error) {
     console.error("Error in loadMore:", error);

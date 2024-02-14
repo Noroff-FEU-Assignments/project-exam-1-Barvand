@@ -35,6 +35,8 @@ async function displayCorrectPage() {
     } else if (webUrl.includes("contact")) {
     } else if (webUrl.includes("warning")) {
     }
+
+    return post;
   } catch (error) {
     console.error("Error in displayCorrectPage:", error);
 
@@ -44,19 +46,22 @@ async function displayCorrectPage() {
       if (errorContainerBlogPage) {
         errorContainerBlogPage.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
       }
-    }
-  }
-}
+    };
+  };
+};
 
 displayCorrectPage();
 setupHamburgerMenu();
 
+
+
+// carousel buttons for functionality 
 const carousel = document.querySelector(".carousel");
 const arrowBtns = document.querySelectorAll(".carousel-container i");
 
 arrowBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const scrollAmount = carousel.offsetWidth; // Adjust this value as needed
+    const scrollAmount = carousel.offsetWidth; // Width of the carousel depending on the size. Shame it does not include gap or padding. 
     carousel.scrollLeft += btn.id === "left" ? -scrollAmount : scrollAmount;
   });
 });
