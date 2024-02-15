@@ -45,6 +45,11 @@ label[for="search"] {
   display: none;
 }
 
+.active { 
+  background-color: white;
+  color: black;
+}
+
 /* Categories selector */
 .categories-container {
   display: grid;
