@@ -67,7 +67,7 @@ export async function createBlogsPage(post, parentElement) {
 
     const titleElement = document.createElement("h2");
     titleElement.classList.add("margin");
-    titleElement.innerText = post.acf.title;
+    titleElement.textContent = post.acf.title;
 
     const summaryText = document.createElement("p");
     summaryText.classList.add("summary");
@@ -76,7 +76,7 @@ export async function createBlogsPage(post, parentElement) {
     const readMoreButton = document.createElement("a");
     readMoreButton.classList.add("readmore-btn");
     readMoreButton.href = `blogpage.html?id=${post.id}`;
-    readMoreButton.innerText = `read more...`;
+    readMoreButton.textContent = `read more...`;
 
     const buttonsDivElement = document.createElement("div");
     buttonsDivElement.classList.add("carousel-btns");
@@ -84,14 +84,14 @@ export async function createBlogsPage(post, parentElement) {
     const categoryButton = document.createElement("a");
     categoryButton.classList.add("category-emblem");
     categoryButton.href = `blogpage.html?id=${post.id}`;
-    categoryButton.innerText = `${post.acf.category}`;
+    categoryButton.textContent = post.acf.category;
 
     const publishedElement = document.createElement("p");
     publishedElement.classList.add("published");
-    publishedElement.innerText = `Published on `;
+    publishedElement.textContent = `Published on `;
 
     const dateSpan = document.createElement("span");
-    dateSpan.innerText = ` // ${post.acf.post_date}`;
+    dateSpan.textContent = ` // ${post.acf.post_date}`;
     dateSpan.classList.add("date-color");
 
     parentElement.appendChild(divElement);
