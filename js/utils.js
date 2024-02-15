@@ -225,7 +225,12 @@ const allButtons = document.querySelectorAll(".category-emblem");
 
 allButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    button.classList.toggle("active");
+    // Remove the "active" class from all buttons
+    allButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    // Add the "active" class to the clicked button
+    button.classList.add("active");
   });
 });
 
