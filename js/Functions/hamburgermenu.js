@@ -4,14 +4,14 @@ export function setupHamburgerMenu() {
   const navMenu = document.querySelector(".nav-menu");
 
   hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+    hamburger.classList.toggle("active-menu");
+    navMenu.classList.toggle("active-menu");
   });
 
   document.querySelectorAll(".nav-link").forEach((n) =>
     n.addEventListener("click", () => {
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
+      hamburger.classList.remove("active-menu");
+      navMenu.classList.remove("active-menu");
     })
   );
 }

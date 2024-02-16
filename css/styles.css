@@ -149,6 +149,7 @@ p {
 .warning-image {
   object-fit: cover;
   height: 500px;
+  width: 100%;
 }
 
 /* makes sure text does not display for links and aria labels. For screen readers */

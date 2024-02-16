@@ -55,13 +55,13 @@ header {
   .hamburger {
     display: block;
   }
-  .hamburger.active .bar:nth-child(2) {
+  .hamburger.active-menu .bar:nth-child(2) {
     opacity: 0;
   }
-  .hamburger.active .bar:nth-child(1) {
+  .hamburger.active-menu .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
-  .hamburger.active .bar:nth-child(3) {
+  .hamburger.active-menu .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
 
@@ -92,7 +92,7 @@ header {
     background: white;
   }
 
-  .nav-menu.active {
+  .nav-menu.active-menu {
     left: 0;
     background-color: rgb(0, 0, 0);
   }
