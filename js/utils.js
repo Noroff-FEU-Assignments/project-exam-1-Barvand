@@ -221,6 +221,8 @@ async function returnToAllPosts() {
   }
 }
 
+
+// makes sure the category becomes a different colour until a different category is clicked. 
 const allButtons = document.querySelectorAll(".category-emblem");
 
 allButtons.forEach((button) => {
