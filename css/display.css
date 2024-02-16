@@ -1,0 +1,117 @@
+/* Flex */
+header,
+body,
+/* about */
+.card-team,
+/* Contact page */
+.contact-container,
+.information-container,
+.socials,
+/* Blog page */
+.post-text,
+.title-container,
+.publish-container,
+.modal,
+.return-btn-container,
+.search-input-container,
+/* Index */
+.hero-image,
+.carousel-card,
+.blog-card-tag,
+.blog-card,
+/* nav */
+.navbar,
+.nav-menu,
+/* footer */
+.footer-logo,
+.footer-row,
+footer ul,
+/* Main flex containers */
+.flex-wrapper,
+.flex-wrapper-about,
+.flex-wrapper-blogpage {
+  display: flex;
+}
+
+/* FLEX DIRECTIONS */
+header,
+body,
+/* about */
+.card-team,
+/* blog page */
+.flex-wrapper-blogpage,
+.modal,
+.post-text,
+/* contact */
+.information-container,
+/* index */
+.carousel-card,
+.hero-image,
+.blog-card,
+
+/* footer */
+footer ul,
+/* general flex containers */
+.flex-wrapper,
+.flex-wrapper-about {
+  flex-direction: column;
+}
+
+/* justify content properties  */
+
+/* Space between */
+.navbar,
+.title-container,
+.publish-container,
+.post-text,
+.footer-row,
+.blog-card {
+  justify-content: space-between;
+}
+
+/* Center */
+.modal,
+.return-btn-container,
+.information-container,
+.hero-image,
+.footer-logo {
+  justify-content: center;
+}
+
+/* Flex Start */
+.socials {
+  justify-content: flex-start;
+}
+
+/* Flex End */
+.blog-card-tag,
+.nav-menu {
+  justify-content: flex-end;
+}
+
+/*  grid  */
+
+.card-team-container,
+.about-grid-container {
+  display: grid;
+}
+
+.card-team-container {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.about-grid-container {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((97%) / 3);
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}

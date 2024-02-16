@@ -11,7 +11,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
-// renders the blog page. 
+// renders the blog page.
 export async function renderBlogPage() {
   try {
     const post = await fetchData(url);

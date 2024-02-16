@@ -1,0 +1,145 @@
+/* media queries index page */
+@media (max-width: 1300px) {
+  .carousel {
+    grid-auto-columns: calc((97% / 2));
+  }
+}
+
+@media (max-width: 750px) {
+  .carousel {
+    grid-auto-columns: calc((97% / 1));
+  }
+
+  .carousel-container button {
+    display: none;
+  }
+}
+
+@media (max-width: 330px) {
+  .carousel-btns {
+    display: none;
+  }
+
+  .carousel-card {
+    background-position: right;
+  }
+}
+
+/* media queries blogs page */
+@media (max-width: 1050px) {
+  .search-input-container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 450px) {
+  .blog-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .blog-card {
+    background-position: right;
+  }
+
+  .post-text {
+    height: auto;
+  }
+
+  .search-input-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 450px) {
+  .search-input-container {
+    width: 100%;
+  }
+}
+
+/* media queries contact page */
+@media (max-width: 1025px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .information-container,
+  .contact-form {
+    width: 100%;
+  }
+}
+
+/* media queries navigation page */
+@media (max-width: 800px) {
+  .hamburger {
+    display: block;
+  }
+  .hamburger.active-menu .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active-menu .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active-menu .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    position: absolute;
+    left: -100%;
+    top: 80px;
+    gap: 0;
+    flex-direction: column;
+    width: 100%;
+    transition: 0.3s;
+    border-bottom: 3px solid #f2c75c;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid grey;
+    width: 100%;
+  }
+
+  .nav-link {
+    display: block;
+    transition: 0.7s ease; /* Corrected the transition timing */
+    padding: 20px 20px;
+  }
+
+  .nav-link:hover {
+    color: black;
+    background: white;
+  }
+
+  .nav-menu.active-menu {
+    left: 0;
+    background-color: rgb(0, 0, 0);
+  }
+
+  .nav-menu a {
+    color: rgb(255, 255, 255);
+  }
+}
+
+/* media queries footer */
+@media (max-width: 860px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-col {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+/*  media queries general style BODY */
+@media (max-width: 750px) {
+  body {
+    overflow: scroll;
+  }
+}

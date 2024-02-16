@@ -1,0 +1,389 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.whitespace {
+  margin: 20px;
+}
+
+.white-line {
+  border-top: 2px solid rgba(255, 255, 255, 0.37);
+}
+
+/* wrapper used in all pages except blog page and about us */
+.flex-wrapper {
+  margin: auto;
+  max-width: 1400px;
+  height: 100%;
+  width: 90%;
+  flex: 1;
+}
+
+/* Loader */
+.loader-container {
+  margin: auto;
+}
+
+/*  INDEX PAGE  */
+.blog-card {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  max-width: 800px;
+}
+
+.blog-card-tag {
+  float: right;
+}
+
+.post-text {
+  background-color: rgba(0, 0, 0, 0.815);
+  border: 2px rgb(145, 145, 145) solid;
+  width: 100%;
+  color: white;
+}
+
+.hero-btn {
+  text-transform: uppercase;
+  background-color: black;
+  border: white 2px solid;
+}
+
+.hero-btn:hover {
+  color: black;
+  background-color: #f2c75c;
+  border: black 2px solid;
+}
+
+.carousel {
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-container {
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.carousel-container button {
+  background: rgb(175, 174, 174);
+  text-align: center;
+  border-radius: 80%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 1rem;
+  transform: translateY(-50%);
+  color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+}
+
+.carousel-container button:hover {
+  background: rgb(59, 59, 59);
+}
+
+.fa-angle-left {
+  left: -30px;
+}
+.fa-angle-right {
+  right: -30px;
+}
+
+.carousel-card {
+  height: 400px;
+  justify-content: flex-end;
+  list-style: none;
+  background: #fff;
+  background-size: cover;
+  background-color: black;
+}
+
+.carousel-text:hover {
+  border: solid 2px #f2c75c;
+}
+
+.readmore-btn {
+  text-transform: none;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.readmore-btn:hover {
+  color: #b48817;
+}
+
+.category-emblem {
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: black;
+  border: 1px white solid;
+  color: white;
+  align-self: center;
+  text-decoration: none;
+}
+
+.category-emblem:hover {
+  color: black;
+  background-color: white;
+}
+
+/* ABOUT PAGE  */
+
+.flex-wrapper-about {
+  margin: auto;
+  max-width: 1100px;
+  flex: 1;
+  height: 100%;
+  width: 90%;
+}
+
+.card-team-container {
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
+.flex-card-about {
+  width: 100%;
+}
+
+.card-image-container {
+  text-align: center;
+  background-color: #f2c75c;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+}
+
+/* BLOG PAGE */
+.flex-wrapper-blogpage {
+  margin: auto;
+  max-width: 900px;
+  flex: 1;
+  height: 100%;
+  width: 90%;
+}
+
+.category-blog-page {
+  width: 100px;
+  text-align: center;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.952);
+  margin: auto;
+  z-index: 9999; /* Ensure modal appears on top */
+}
+
+.close {
+  position: absolute;
+  top: 100px;
+  right: 3%;
+  top: 0%;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+}
+
+.return-btn {
+  background-color: black;
+  border: white 2px solid;
+  width: 100%;
+  text-align: center;
+}
+
+.return-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+/* Blogs Page */
+
+.blog-container {
+  width: 100%;
+  gap: 30px;
+  overflow: hidden;
+}
+
+/* load more button */
+
+.button-container {
+  align-self: center;
+  margin-top: 100px;
+}
+
+#load-more-btn {
+  align-self: center;
+  background-color: black;
+  border: white 2px solid;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#load-more-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+/* Search Bar */
+.search-input-container {
+  width: 20%;
+  float: right;
+  align-items: center;
+}
+
+input#search {
+  margin: 0;
+}
+
+#search-button {
+  width: 50px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+label[for="search"] {
+  display: none;
+}
+
+.active {
+  background-color: white;
+  color: black;
+}
+
+/* Categories selector */
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 100px));
+}
+
+/* Contact Page*/
+.contact-container {
+  width: 100%;
+}
+
+.information-container {
+  width: 50%;
+}
+
+.information-container ul {
+  margin: 20px 0;
+}
+
+.contact-li {
+  font-weight: 400;
+  margin: 10px 0;
+  list-style: none;
+  text-transform: none;
+}
+
+.contact-li i {
+  margin-right: 10px;
+  color: #f2c75c;
+}
+.contact-form {
+  width: 50%;
+  background-color: #f2c75c;
+  color: black;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 5px;
+  color: black;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: black;
+}
+
+.input-container {
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.contact-submit-btn {
+  color: white;
+  text-align: center;
+  background-color: black;
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.socials-title {
+  margin-bottom: 0;
+  text-transform: none;
+}
+
+.socials {
+  margin-top: 25px;
+  width: 100%;
+  gap: 20px;
+}
+
+.socials i {
+  font-size: 56px;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px
+      no-repeat,
+    conic-gradient(#0000 30%, #ffa516);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* makes sure text does not display for links and aria labels. For screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -34,7 +34,7 @@ export async function displayBlogsPage() {
       displayPosts,
       buttonContainer
     );
-    return post
+    return post;
   } catch (error) {
     console.error("Error in displayBlogsPage:", error);
   }
@@ -57,13 +57,16 @@ function displayPosts(posts) {
 // function to render the html for the blog page with the parameters included.
 export async function createBlogsPage(post, parentElement) {
   try {
-    const divElement = document.createElement("a");
-    divElement.classList.add("blog-card");
-    divElement.style.backgroundImage = `url(${post.acf.post_image})`;
-    divElement.href = `blogpage.html?id=${post.id}`;
+    const anchorElement = document.createElement("a");
+    anchorElement.href = `blogpage.html?id=${post.id}`;
+    parentElement.appendChild(anchorElement);
+
+    const articleElement = document.createElement("article");
+    articleElement.classList.add("blog-card");
+    articleElement.style.backgroundImage = `url(${post.acf.post_image})`;
 
     const textContainer = document.createElement("div");
-    textContainer.classList.add("post-text");
+    textContainer.classList.add("post-text", "card-padding");
 
     const titleElement = document.createElement("h2");
     titleElement.classList.add("margin");
@@ -79,7 +82,7 @@ export async function createBlogsPage(post, parentElement) {
     readMoreButton.textContent = `read more...`;
 
     const buttonsDivElement = document.createElement("div");
-    buttonsDivElement.classList.add("carousel-btns");
+    buttonsDivElement.classList.add("blog-card-tag");
 
     const categoryButton = document.createElement("a");
     categoryButton.classList.add("category-emblem");
@@ -94,17 +97,17 @@ export async function createBlogsPage(post, parentElement) {
     dateSpan.textContent = ` // ${post.acf.post_date}`;
     dateSpan.classList.add("date-color");
 
-    parentElement.appendChild(divElement);
-    divElement.appendChild(buttonsDivElement);
+    anchorElement.appendChild(articleElement);
+    articleElement.appendChild(buttonsDivElement);
     buttonsDivElement.appendChild(categoryButton);
-    divElement.appendChild(textContainer);
+    articleElement.appendChild(textContainer);
     publishedElement.appendChild(dateSpan);
     textContainer.appendChild(publishedElement);
     textContainer.appendChild(titleElement);
     textContainer.appendChild(summaryText);
     summaryText.appendChild(readMoreButton);
 
-    return divElement;
+    return anchorElement;
   } catch (error) {
     console.error("Error in createBlogsPage:", error);
   }

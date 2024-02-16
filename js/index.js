@@ -4,6 +4,7 @@ import { displayBlogsPage } from "./Functions/renderblogs.js";
 import { renderBlogPage } from "./Functions/renderblogpage.js";
 import { setupHamburgerMenu } from "./Functions/hamburgermenu.js";
 import { searchBar, createCategories } from "./utils.js";
+import { carouselSlide } from "./Functions/carousel.js";
 
 const url =
   "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
@@ -26,6 +27,7 @@ async function displayCorrectPage() {
       !webUrl.includes("warning")
     ) {
       renderCarousel();
+      carouselSlide();
     } else if (webUrl.includes("blogs")) {
       await displayBlogsPage();
       searchBar();
@@ -46,22 +48,9 @@ async function displayCorrectPage() {
       if (errorContainerBlogPage) {
         errorContainerBlogPage.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
       }
-    };
-  };
-};
+    }
+  }
+}
 
 displayCorrectPage();
 setupHamburgerMenu();
-
-
-
-// carousel buttons for functionality 
-const carousel = document.querySelector(".carousel");
-const arrowBtns = document.querySelectorAll(".carousel-container button");
-
-arrowBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const scrollAmount = carousel.offsetWidth; // Width of the carousel depending on the size. Shame it does not include gap or padding. 
-    carousel.scrollLeft += btn.id === "left" ? -scrollAmount : scrollAmount;
-  });
-});

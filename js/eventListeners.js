@@ -9,6 +9,7 @@ export function loadMore(
   try {
     const loadMoreButton = document.createElement("a");
     loadMoreButton.id = "load-more-btn";
+    loadMoreButton.classList.add("btn");
     loadMoreButton.innerText = "Load More";
     parentElement.appendChild(loadMoreButton);
 

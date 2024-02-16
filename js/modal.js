@@ -5,10 +5,12 @@ export function renderModal(imageSrc, title, parentElement) {
     modalDiv.classList.add("modal");
     modalDiv.id = "myModal";
     parentElement.appendChild(modalDiv);
+    document.body.style.overflow = "hidden";
 
     // onclick function to remove the modal from the screen when pressing the image/ div container
     modalDiv.onclick = function () {
       modalDiv.remove();
+      document.body.style.overflow = "";
     };
 
     // this creates the X icon by using a Span
@@ -20,6 +22,7 @@ export function renderModal(imageSrc, title, parentElement) {
     // click function to remove the modal when clicked on the X icon.
     close.onclick = function () {
       modalDiv.remove();
+      document.body.style.overflow = "";
     };
 
     // the actual image of the modal.
@@ -29,13 +32,7 @@ export function renderModal(imageSrc, title, parentElement) {
     modalImage.alt = title;
     modalDiv.appendChild(modalImage);
 
-    // the alt text of the image shown under the image when modal is opened.
-    const modalAlt = document.createElement("p");
-    modalAlt.id = "caption";
-    modalAlt.innerText = title;
-    modalDiv.appendChild(modalAlt);
-
-    return modalDiv
+    return modalDiv;
   } catch (error) {
     console.error("Error in renderModal:", error);
   }

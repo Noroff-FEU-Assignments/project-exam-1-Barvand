@@ -1,0 +1,216 @@
+body {
+  font-family: "Asap Condensed", sans-serif;
+}
+
+.asap-condensed-regular {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.asap-condensed-regular-italic {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.asap-condensed-bold {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1,
+h2 {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+h3 {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+li {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+p,
+a,
+button {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+}
+
+button {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Padding general buttons */
+.btn {
+  padding: 10px 20px;
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+/* padding for the about page cards and post texts */
+.card-padding {
+  padding: 10px;
+}
+
+/* Typography styles for the blog cards */
+.published {
+  margin: 5px;
+  color: grey;
+  text-transform: none;
+}
+
+/* Typography styles index page */
+
+.hero-title,
+.hero-phrase,
+.hero-btn {
+  margin: 10px;
+  font-weight: 700;
+}
+
+.hero-phrase {
+  font-size: 20px;
+}
+
+.hero-title {
+  font-size: 32px;
+}
+
+/* Carousel buttons */
+.carousel-container button {
+  padding: 20px;
+}
+
+/* Category emblem blog cards*/
+.category-emblem {
+  padding: 5px;
+}
+
+/* typography styles blog page */
+.publishedBlog {
+  margin-top: 0;
+  font-style: italic;
+  color: grey;
+}
+
+.date-color {
+  color: #f2c75c;
+}
+
+.blog-header {
+  text-transform: inherit;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.blog-header-h3 {
+  font-weight: 500;
+  text-transform: inherit;
+  margin: 20px 0 5px 0;
+  color: #f2c75c;
+}
+
+.blog-paragraph {
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.return-btn-container {
+  margin-top: 20px;
+}
+
+.return-btn {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  padding: 10px 20px;
+}
+
+/* typography styles Contact page */
+.contact-container {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Typography styles about page */
+.card-team-text {
+  text-align: center;
+  border: solid white 1px;
+}
+
+.card-team-text-name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card-team-text-occupation {
+  color: #f2c75c;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.card-team-text-socials {
+  color: #f2c75c;
+}
+
+.card-team-socials i {
+  margin: 10px;
+  font-size: 24px;
+  color: white;
+}
+
+/* typography styles Footer */
+.disclaimer {
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/*  general typography styles  */
+
+a {
+  color: #f2c75c;
+  text-decoration: none;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.margin {
+  margin: 3px;
+}
+
+.green {
+  color: rgb(14, 211, 14);
+}
+
+.red {
+  color: red;
+}
+
+.summary {
+  text-transform: none;
+  padding-left: 5px;
+}

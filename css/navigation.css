@@ -1,7 +1,5 @@
 header {
   margin: auto;
-  display: flex;
-  flex-direction: column;
   max-width: 1400px;
   height: 100%;
   width: 90%;
@@ -9,14 +7,10 @@ header {
 
 .navbar {
   min-height: 100px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 .nav-menu {
-  display: flex;
-  justify-content: flex-end;
   gap: 60px;
   flex: 1;
 }
@@ -51,53 +45,69 @@ header {
   background-color: white;
 }
 
-@media (max-width: 800px) {
-  .hamburger {
-    display: block;
-  }
-  .hamburger.active-menu .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active-menu .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .hamburger.active-menu .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+/* footer */
 
-  .nav-menu {
-    position: absolute;
-    left: -100%;
-    top: 80px;
-    gap: 0;
-    flex-direction: column;
-    width: 100%;
-    transition: 0.3s;
-    border-bottom: 3px solid #f2c75c;
-  }
+.footer {
+  padding: 50px 0;
+}
 
-  .nav-item {
-    border-bottom: 1px solid grey;
-    width: 100%;
-  }
+.footer-logo {
+  margin-top: 20px;
+}
 
-  .nav-link {
-    display: block;
-    transition: 0.7s ease; /* Corrected the transition timing */
-    padding: 20px 20px;
-  }
+footer ul {
+  list-style: none;
+  margin-bottom: 5px;
+}
 
-  .nav-link:hover {
-    color: black;
-    background: white;
-  }
+.footer-row {
+  flex-wrap: wrap;
+  padding: 20px 0 0 0;
+  text-align: center;
+}
 
-  .nav-menu.active-menu {
-    left: 0;
-    background-color: rgb(0, 0, 0);
-  }
+.footer-col {
+  width: 25%;
+}
 
-  .nav-menu a {
-    color: rgb(255, 255, 255);
-  }
+.footer-col li,
+.footer-col h4 {
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.footer-col h4 {
+  font-family: "Asap Condensed", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  color: #f2c75c;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: white;
+  text-transform: capitalize;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+}
+
+.footer-col a:hover {
+  color: black;
+  background-color: white;
+  padding: 2px;
+}
+
+.footer-col .social-links a:hover {
+  color: #f2c75c;
+  padding: 0;
+  background-color: black;
 }
