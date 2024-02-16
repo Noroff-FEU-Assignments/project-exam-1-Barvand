@@ -19,6 +19,11 @@ body {
   border-top: 2px solid rgba(255, 255, 255, 0.37);
 }
 
+.active {
+  background-color: white;
+  color: black;
+}
+
 /* wrapper used in all pages except blog page and about us */
 .flex-wrapper {
   margin: auto;
@@ -183,6 +188,8 @@ body {
   cursor: pointer;
 }
 
+
+/* Modal styling */
 .modal {
   width: 100%;
   height: 100%;
@@ -227,7 +234,6 @@ body {
 }
 
 /* load more button */
-
 .button-container {
   align-self: center;
   margin-top: 100px;
@@ -267,11 +273,6 @@ input#search {
 
 label[for="search"] {
   display: none;
-}
-
-.active {
-  background-color: white;
-  color: black;
 }
 
 /* Categories selector */
