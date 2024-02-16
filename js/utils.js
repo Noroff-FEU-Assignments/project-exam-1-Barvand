@@ -10,7 +10,7 @@ export function returnButton(text, link, parentElement) {
   parentElement.appendChild(returnButtonDiv);
 
   const returnButton = document.createElement("a");
-  returnButton.classList.add("return-btn");
+  returnButton.classList.add("btn", "return-btn");
   returnButton.textContent = text;
   returnButton.href = link;
   returnButtonDiv.appendChild(returnButton);

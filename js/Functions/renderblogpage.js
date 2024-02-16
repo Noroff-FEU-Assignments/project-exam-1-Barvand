@@ -69,7 +69,7 @@ async function createContainerPublisher(date, author) {
     blogPage.appendChild(publishContainer);
 
     const publishedDate = document.createElement("p");
-    publishedDate.classList.add("publishedBlog");
+    publishedDate.classList.add("published");
     publishedDate.innerText = `Published on `;
     publishContainer.appendChild(publishedDate);
 
@@ -79,7 +79,7 @@ async function createContainerPublisher(date, author) {
     publishedDate.appendChild(dateSpan);
 
     const publishedWhoElement = document.createElement("p");
-    publishedWhoElement.classList.add("publishedBlog");
+    publishedWhoElement.classList.add("published");
     publishedWhoElement.innerText = `Published by `;
     publishContainer.appendChild(publishedWhoElement);
 
