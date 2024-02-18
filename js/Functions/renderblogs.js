@@ -61,7 +61,7 @@ export async function createBlogsPage(post, parentElement) {
     anchorElement.href = `blogpage.html?id=${post.id}`;
     parentElement.appendChild(anchorElement);
 
-    const articleElement = document.createElement("article");
+    const articleElement = document.createElement("div");
     articleElement.classList.add("blog-card");
     articleElement.style.backgroundImage = `url(${post.acf.post_image})`;
 
