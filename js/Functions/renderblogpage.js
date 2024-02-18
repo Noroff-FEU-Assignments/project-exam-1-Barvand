@@ -48,7 +48,7 @@ async function renderTitle(title, category) {
     blogPage.appendChild(titleContainer);
 
     const blogTitle = document.createElement("h1");
-    blogTitle.classList.add("blog-title");
+    blogTitle.classList.add("title-post");
     blogTitle.innerText = title;
     titleContainer.appendChild(blogTitle);
 
