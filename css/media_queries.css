@@ -50,6 +50,20 @@
   }
 }
 
+/* Media queries / BLOG PAGE */
+@media (max-width: 350px) {
+
+  .title-container, .publish-container { 
+    flex-direction: column;
+  
+  }
+
+  .category-blog-page { 
+    align-self: inherit;
+  }
+
+}
+
 @media (max-width: 450px) {
   .search-input-container {
     width: 100%;
