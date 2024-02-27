@@ -1,5 +1,5 @@
 # The Digital Miner / Exam Project 1
-![Digital Miner Logo](/images/readmeDigitalMiner.jpg)
+![Digital Miner Logo](/images/readmeDigitalMiner.png)
 
 # What is the Digital Miner
 
