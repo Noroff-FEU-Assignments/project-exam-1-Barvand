@@ -1,8 +1,7 @@
 import { fetchData } from "../fetch.js";
 import { createBlogsPage } from "./renderblogs.js";
 
-const url =
-  "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard";
+const url = "/posts.json";
 
 // This renders the whole index page. //
 
