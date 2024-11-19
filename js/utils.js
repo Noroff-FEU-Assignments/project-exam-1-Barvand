@@ -1,8 +1,8 @@
 import { fetchData } from "./fetch.js";
 import { createBlogsPage } from "./Functions/renderblogs.js";
 
-const url =
-  "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
+const url = "./posts.json";
+
 // function that makes a return button.
 export function returnButton(text, link, parentElement) {
   const returnButtonDiv = document.createElement("div");

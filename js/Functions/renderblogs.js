@@ -2,7 +2,7 @@ import { fetchData } from "../fetch.js";
 import { getFirstPosts, getLastPosts } from "../utils.js";
 import { loadMore } from "../eventListeners.js";
 
-const url = `https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20`;
+const url = "/posts.json";
 
 const blogContainer = document.querySelector(".blog-container");
 const buttonContainer = document.querySelector(".button-container");

@@ -2,8 +2,7 @@ import { fetchData } from "../fetch.js";
 import { returnButton } from "../utils.js";
 import { renderModal } from "../modal.js";
 
-const url =
-  "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
+const url = "./posts.json";;
 
 const blogPageFlexContainer = document.querySelector(".flex-wrapper-blogpage");
 const blogPage = document.querySelector(".blogpage");

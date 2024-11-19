@@ -6,15 +6,11 @@ import { setupHamburgerMenu } from "./Functions/hamburgermenu.js";
 import { searchBar, createCategories } from "./utils.js";
 import { carouselSlide } from "./Functions/carousel.js";
 
-const url =
-  "https://www.bartholomeusberg.com/wp-json/wp/v2/posts?acf_format=standard&per_page=20";
-
 const errorContainer = document.querySelector(".flex-wrapper");
 const errorContainerBlogPage = document.querySelector(".flex-wrapper-blogpage");
 
 async function displayCorrectPage() {
   try {
-    const post = await fetchData(url);
     const webUrl = window.location.href;
 
     // display index page - set up like this so it does not interfere with netlify as it might change the name of the index page.
@@ -37,8 +33,6 @@ async function displayCorrectPage() {
     } else if (webUrl.includes("contact")) {
     } else if (webUrl.includes("warning")) {
     }
-
-    return post;
   } catch (error) {
     console.error("Error in displayCorrectPage:", error);
 
